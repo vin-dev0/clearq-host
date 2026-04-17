@@ -19,7 +19,7 @@ import {
   MessageCircle,
   Clock
 } from "lucide-react";
-import { ThemeToggle } from "@/components/ui/ThemeToggle";
+omponents/ui/ThemeToggle";/d
 
 const sections = [
   {
@@ -76,7 +76,6 @@ export default function LearnMorePage() {
             <Logo />
           </Link>
           <div className="flex items-center gap-4">
-            <ThemeToggle />
             <Link href="/login">
               <Button variant="ghost" className="text-zinc-400 hover:text-white">Sign In</Button>
             </Link>

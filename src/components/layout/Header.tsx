@@ -16,8 +16,6 @@ import {
   Settings,
   User,
   LogOut,
-  Moon,
-  Sun,
   HelpCircle,
   ChevronDown,
   Ticket,
@@ -27,6 +25,8 @@ import {
   FileText,
   Info,
 } from "lucide-react";
+
+
 import { formatDistanceToNow } from "date-fns";
 import { 
   markNotificationAsRead, 
@@ -65,9 +65,9 @@ export function Header({ title, subtitle, actions }: HeaderProps) {
     <header
       className={cn(
         "sticky top-0 z-30 flex h-16 items-center justify-between border-b px-6 backdrop-blur-xl transition-all duration-300",
-        "border-zinc-800 bg-zinc-950/80 dark:border-zinc-800 dark:bg-zinc-950/80",
-        theme === "light" && "border-slate-200 bg-white/90",
+        "border-zinc-800 bg-zinc-950/80",
         sidebarCollapsed ? "ml-16" : "ml-64"
+
       )}
     >
       {/* Left Section - Title or Search */}
@@ -110,25 +110,8 @@ export function Header({ title, subtitle, actions }: HeaderProps) {
           <kbd className="rounded bg-zinc-700 px-1 text-[10px]">⌘K</kbd>
         </button>
 
-        {/* Theme Toggle */}
-        <button
-          onClick={toggleTheme}
-          className={cn(
-            "rounded-lg p-2 transition-colors",
-            theme === "dark" 
-              ? "text-zinc-400 hover:bg-zinc-800 hover:text-white" 
-              : "text-slate-500 hover:bg-slate-100 hover:text-slate-900"
-          )}
-          aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-        >
-          {theme === "dark" ? (
-            <Sun className="h-5 w-5" />
-          ) : (
-            <Moon className="h-5 w-5" />
-          )}
-        </button>
-
         {/* Notifications */}
+
         <Dropdown
           align="right"
           trigger={

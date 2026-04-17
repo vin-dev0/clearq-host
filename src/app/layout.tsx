@@ -22,15 +22,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="light" suppressHydrationWarning data-scroll-behavior="smooth">
-      <body className="antialiased">
+    <html lang="en" className="dark" suppressHydrationWarning data-scroll-behavior="smooth" style={{ colorScheme: 'dark' }}>
+      <body className="antialiased bg-zinc-950">
         <AuthProvider>
           <ThemeProvider>
             <GoogleAnalytics />
             {children}
           </ThemeProvider>
         </AuthProvider>
+
       </body>
     </html>
+
   );
 }

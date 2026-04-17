@@ -29,7 +29,7 @@ import {
   CreditCard,
 } from "lucide-react";
 import { AIChatWidget } from "@/components/chat/AIChatWidget";
-import { ThemeToggle } from "@/components/ui/ThemeToggle";
+omponents/ui/ThemeToggle";/d
 
 const features = [
   {
@@ -114,8 +114,7 @@ export default function LandingPage() {
               <Link href="/learn-more" className="text-sm font-medium text-zinc-400 transition-colors hover:text-white">Learn More</Link>
             </div>
           </div>
-          <div className="flex items-center gap-3">
-            <ThemeToggle />
+          <div className="flex items-center gap-4">
             <div className="hidden sm:flex items-center gap-2 mr-2">
               <Link href="/client/login">
                 <Button variant="ghost" className="text-zinc-400 hover:text-white">
