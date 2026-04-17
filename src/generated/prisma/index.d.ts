@@ -5011,6 +5011,7 @@ export namespace Prisma {
      * The data used to create many Users.
      */
     data: UserCreateManyInput | UserCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -5025,6 +5026,7 @@ export namespace Prisma {
      * The data used to create many Users.
      */
     data: UserCreateManyInput | UserCreateManyInput[]
+    skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -6315,6 +6317,7 @@ export namespace Prisma {
      * The data used to create many Accounts.
      */
     data: AccountCreateManyInput | AccountCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -6329,6 +6332,7 @@ export namespace Prisma {
      * The data used to create many Accounts.
      */
     data: AccountCreateManyInput | AccountCreateManyInput[]
+    skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -7234,6 +7238,7 @@ export namespace Prisma {
      * The data used to create many Sessions.
      */
     data: SessionCreateManyInput | SessionCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -7248,6 +7253,7 @@ export namespace Prisma {
      * The data used to create many Sessions.
      */
     data: SessionCreateManyInput | SessionCreateManyInput[]
+    skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -8106,6 +8112,7 @@ export namespace Prisma {
      * The data used to create many VerificationTokens.
      */
     data: VerificationTokenCreateManyInput | VerificationTokenCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -8120,6 +8127,7 @@ export namespace Prisma {
      * The data used to create many VerificationTokens.
      */
     data: VerificationTokenCreateManyInput | VerificationTokenCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -9236,6 +9244,7 @@ export namespace Prisma {
      * The data used to create many Organizations.
      */
     data: OrganizationCreateManyInput | OrganizationCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -9250,6 +9259,7 @@ export namespace Prisma {
      * The data used to create many Organizations.
      */
     data: OrganizationCreateManyInput | OrganizationCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -10481,6 +10491,7 @@ export namespace Prisma {
      * The data used to create many Teams.
      */
     data: TeamCreateManyInput | TeamCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -10495,6 +10506,7 @@ export namespace Prisma {
      * The data used to create many Teams.
      */
     data: TeamCreateManyInput | TeamCreateManyInput[]
+    skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -11478,6 +11490,7 @@ export namespace Prisma {
      * The data used to create many TeamMembers.
      */
     data: TeamMemberCreateManyInput | TeamMemberCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -11492,6 +11505,7 @@ export namespace Prisma {
      * The data used to create many TeamMembers.
      */
     data: TeamMemberCreateManyInput | TeamMemberCreateManyInput[]
+    skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -12667,6 +12681,7 @@ export namespace Prisma {
      * The data used to create many Tickets.
      */
     data: TicketCreateManyInput | TicketCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -12681,6 +12696,7 @@ export namespace Prisma {
      * The data used to create many Tickets.
      */
     data: TicketCreateManyInput | TicketCreateManyInput[]
+    skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -13864,6 +13880,7 @@ export namespace Prisma {
      * The data used to create many Templates.
      */
     data: TemplateCreateManyInput | TemplateCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -13878,6 +13895,7 @@ export namespace Prisma {
      * The data used to create many Templates.
      */
     data: TemplateCreateManyInput | TemplateCreateManyInput[]
+    skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -14874,6 +14892,7 @@ export namespace Prisma {
      * The data used to create many CSATS.
      */
     data: CSATCreateManyInput | CSATCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -14888,6 +14907,7 @@ export namespace Prisma {
      * The data used to create many CSATS.
      */
     data: CSATCreateManyInput | CSATCreateManyInput[]
+    skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -15856,6 +15876,7 @@ export namespace Prisma {
      * The data used to create many Comments.
      */
     data: CommentCreateManyInput | CommentCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -15870,6 +15891,7 @@ export namespace Prisma {
      * The data used to create many Comments.
      */
     data: CommentCreateManyInput | CommentCreateManyInput[]
+    skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -16883,6 +16905,7 @@ export namespace Prisma {
      * The data used to create many Attachments.
      */
     data: AttachmentCreateManyInput | AttachmentCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -16897,6 +16920,7 @@ export namespace Prisma {
      * The data used to create many Attachments.
      */
     data: AttachmentCreateManyInput | AttachmentCreateManyInput[]
+    skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -17838,6 +17862,7 @@ export namespace Prisma {
      * The data used to create many TicketWatchers.
      */
     data: TicketWatcherCreateManyInput | TicketWatcherCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -17852,6 +17877,7 @@ export namespace Prisma {
      * The data used to create many TicketWatchers.
      */
     data: TicketWatcherCreateManyInput | TicketWatcherCreateManyInput[]
+    skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -18787,6 +18813,7 @@ export namespace Prisma {
      * The data used to create many Tags.
      */
     data: TagCreateManyInput | TagCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -18801,6 +18828,7 @@ export namespace Prisma {
      * The data used to create many Tags.
      */
     data: TagCreateManyInput | TagCreateManyInput[]
+    skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -19735,6 +19763,7 @@ export namespace Prisma {
      * The data used to create many TicketTags.
      */
     data: TicketTagCreateManyInput | TicketTagCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -19749,6 +19778,7 @@ export namespace Prisma {
      * The data used to create many TicketTags.
      */
     data: TicketTagCreateManyInput | TicketTagCreateManyInput[]
+    skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -20714,6 +20744,7 @@ export namespace Prisma {
      * The data used to create many Notifications.
      */
     data: NotificationCreateManyInput | NotificationCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -20728,6 +20759,7 @@ export namespace Prisma {
      * The data used to create many Notifications.
      */
     data: NotificationCreateManyInput | NotificationCreateManyInput[]
+    skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -21687,6 +21719,7 @@ export namespace Prisma {
      * The data used to create many ActivityLogs.
      */
     data: ActivityLogCreateManyInput | ActivityLogCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -21701,6 +21734,7 @@ export namespace Prisma {
      * The data used to create many ActivityLogs.
      */
     data: ActivityLogCreateManyInput | ActivityLogCreateManyInput[]
+    skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -22732,6 +22766,7 @@ export namespace Prisma {
      * The data used to create many SavedViews.
      */
     data: SavedViewCreateManyInput | SavedViewCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -22746,6 +22781,7 @@ export namespace Prisma {
      * The data used to create many SavedViews.
      */
     data: SavedViewCreateManyInput | SavedViewCreateManyInput[]
+    skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -23872,6 +23908,7 @@ export namespace Prisma {
      * The data used to create many Articles.
      */
     data: ArticleCreateManyInput | ArticleCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -23886,6 +23923,7 @@ export namespace Prisma {
      * The data used to create many Articles.
      */
     data: ArticleCreateManyInput | ArticleCreateManyInput[]
+    skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -24916,6 +24954,7 @@ export namespace Prisma {
      * The data used to create many ArticleCategories.
      */
     data: ArticleCategoryCreateManyInput | ArticleCategoryCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -24930,6 +24969,7 @@ export namespace Prisma {
      * The data used to create many ArticleCategories.
      */
     data: ArticleCategoryCreateManyInput | ArticleCategoryCreateManyInput[]
+    skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -25966,6 +26006,7 @@ export namespace Prisma {
      * The data used to create many ChatRooms.
      */
     data: ChatRoomCreateManyInput | ChatRoomCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -25980,6 +26021,7 @@ export namespace Prisma {
      * The data used to create many ChatRooms.
      */
     data: ChatRoomCreateManyInput | ChatRoomCreateManyInput[]
+    skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -26967,6 +27009,7 @@ export namespace Prisma {
      * The data used to create many ChatRoomMembers.
      */
     data: ChatRoomMemberCreateManyInput | ChatRoomMemberCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -26981,6 +27024,7 @@ export namespace Prisma {
      * The data used to create many ChatRoomMembers.
      */
     data: ChatRoomMemberCreateManyInput | ChatRoomMemberCreateManyInput[]
+    skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -28052,6 +28096,7 @@ export namespace Prisma {
      * The data used to create many ChatMessages.
      */
     data: ChatMessageCreateManyInput | ChatMessageCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -28066,6 +28111,7 @@ export namespace Prisma {
      * The data used to create many ChatMessages.
      */
     data: ChatMessageCreateManyInput | ChatMessageCreateManyInput[]
+    skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -29325,6 +29371,7 @@ export namespace Prisma {
      * The data used to create many Assets.
      */
     data: AssetCreateManyInput | AssetCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -29339,6 +29386,7 @@ export namespace Prisma {
      * The data used to create many Assets.
      */
     data: AssetCreateManyInput | AssetCreateManyInput[]
+    skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -30429,6 +30477,7 @@ export namespace Prisma {
      * The data used to create many InviteCodes.
      */
     data: InviteCodeCreateManyInput | InviteCodeCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -30443,6 +30492,7 @@ export namespace Prisma {
      * The data used to create many InviteCodes.
      */
     data: InviteCodeCreateManyInput | InviteCodeCreateManyInput[]
+    skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -31388,6 +31438,7 @@ export namespace Prisma {
      * The data used to create many JoinRequests.
      */
     data: JoinRequestCreateManyInput | JoinRequestCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -31402,6 +31453,7 @@ export namespace Prisma {
      * The data used to create many JoinRequests.
      */
     data: JoinRequestCreateManyInput | JoinRequestCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -32442,6 +32494,7 @@ export namespace Prisma {
      * The data used to create many AccessLogs.
      */
     data: AccessLogCreateManyInput | AccessLogCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -32456,6 +32509,7 @@ export namespace Prisma {
      * The data used to create many AccessLogs.
      */
     data: AccessLogCreateManyInput | AccessLogCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -33455,6 +33509,7 @@ export namespace Prisma {
      * The data used to create many Inventories.
      */
     data: InventoryCreateManyInput | InventoryCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -33469,6 +33524,7 @@ export namespace Prisma {
      * The data used to create many Inventories.
      */
     data: InventoryCreateManyInput | InventoryCreateManyInput[]
+    skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -34440,6 +34496,7 @@ export namespace Prisma {
      * The data used to create many CalendarEvents.
      */
     data: CalendarEventCreateManyInput | CalendarEventCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -34454,6 +34511,7 @@ export namespace Prisma {
      * The data used to create many CalendarEvents.
      */
     data: CalendarEventCreateManyInput | CalendarEventCreateManyInput[]
+    skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -35430,6 +35488,7 @@ export namespace Prisma {
      * The data used to create many RemoteSessions.
      */
     data: RemoteSessionCreateManyInput | RemoteSessionCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -35444,6 +35503,7 @@ export namespace Prisma {
      * The data used to create many RemoteSessions.
      */
     data: RemoteSessionCreateManyInput | RemoteSessionCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -35540,6 +35600,9 @@ export namespace Prisma {
    */
 
   export const TransactionIsolationLevel: {
+    ReadUncommitted: 'ReadUncommitted',
+    ReadCommitted: 'ReadCommitted',
+    RepeatableRead: 'RepeatableRead',
     Serializable: 'Serializable'
   };
 
@@ -36055,6 +36118,14 @@ export namespace Prisma {
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
+  export const QueryMode: {
+    default: 'default',
+    insensitive: 'insensitive'
+  };
+
+  export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
   export const NullsOrder: {
     first: 'first',
     last: 'last'
@@ -36076,9 +36147,23 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'String[]'
+   */
+  export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
+    
+
+
+  /**
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime[]'
+   */
+  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
     
 
 
@@ -36097,9 +36182,23 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Int[]'
+   */
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
   /**
    * Deep Input Types
@@ -41813,8 +41912,8 @@ export namespace Prisma {
 
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[]
-    notIn?: string[]
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -41822,13 +41921,14 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
   export type DateTimeNullableFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | null
-    notIn?: Date[] | string[] | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
@@ -41838,8 +41938,8 @@ export namespace Prisma {
 
   export type StringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -41847,6 +41947,7 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
@@ -41857,8 +41958,8 @@ export namespace Prisma {
 
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
@@ -42075,8 +42176,8 @@ export namespace Prisma {
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[]
-    notIn?: string[]
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -42084,6 +42185,7 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
     not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
@@ -42092,8 +42194,8 @@ export namespace Prisma {
 
   export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | null
-    notIn?: Date[] | string[] | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
@@ -42106,8 +42208,8 @@ export namespace Prisma {
 
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -42115,6 +42217,7 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
     not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
@@ -42131,8 +42234,8 @@ export namespace Prisma {
 
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
@@ -42145,8 +42248,8 @@ export namespace Prisma {
 
   export type IntNullableFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -42219,8 +42322,8 @@ export namespace Prisma {
 
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -42514,8 +42617,8 @@ export namespace Prisma {
 
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -42637,8 +42740,8 @@ export namespace Prisma {
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -43305,8 +43408,8 @@ export namespace Prisma {
 
   export type FloatNullableFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
     lt?: number | FloatFieldRefInput<$PrismaModel>
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
@@ -43411,8 +43514,8 @@ export namespace Prisma {
 
   export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
     lt?: number | FloatFieldRefInput<$PrismaModel>
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
@@ -43600,8 +43703,8 @@ export namespace Prisma {
 
   export type FloatFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
     lt?: number | FloatFieldRefInput<$PrismaModel>
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
@@ -43667,8 +43770,8 @@ export namespace Prisma {
 
   export type FloatWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
     lt?: number | FloatFieldRefInput<$PrismaModel>
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
@@ -46200,8 +46303,8 @@ export namespace Prisma {
 
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[]
-    notIn?: string[]
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -46214,8 +46317,8 @@ export namespace Prisma {
 
   export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | null
-    notIn?: Date[] | string[] | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
@@ -46225,8 +46328,8 @@ export namespace Prisma {
 
   export type NestedStringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -46244,8 +46347,8 @@ export namespace Prisma {
 
   export type NestedDateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
@@ -46255,8 +46358,8 @@ export namespace Prisma {
 
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[]
-    notIn?: string[]
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -46272,8 +46375,8 @@ export namespace Prisma {
 
   export type NestedIntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -46283,8 +46386,8 @@ export namespace Prisma {
 
   export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | null
-    notIn?: Date[] | string[] | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
@@ -46297,8 +46400,8 @@ export namespace Prisma {
 
   export type NestedIntNullableFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -46308,8 +46411,8 @@ export namespace Prisma {
 
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -46333,8 +46436,8 @@ export namespace Prisma {
 
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
@@ -46347,8 +46450,8 @@ export namespace Prisma {
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -46363,8 +46466,8 @@ export namespace Prisma {
 
   export type NestedFloatNullableFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
     lt?: number | FloatFieldRefInput<$PrismaModel>
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
@@ -46374,8 +46477,8 @@ export namespace Prisma {
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -46390,8 +46493,8 @@ export namespace Prisma {
 
   export type NestedFloatFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
     lt?: number | FloatFieldRefInput<$PrismaModel>
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
@@ -46401,8 +46504,8 @@ export namespace Prisma {
 
   export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
     lt?: number | FloatFieldRefInput<$PrismaModel>
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
@@ -46417,8 +46520,8 @@ export namespace Prisma {
 
   export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
     lt?: number | FloatFieldRefInput<$PrismaModel>
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
@@ -46466,6 +46569,7 @@ export namespace Prisma {
 
   export type AccountCreateManyUserInputEnvelope = {
     data: AccountCreateManyUserInput | AccountCreateManyUserInput[]
+    skipDuplicates?: boolean
   }
 
   export type ActivityLogCreateWithoutUserInput = {
@@ -46495,6 +46599,7 @@ export namespace Prisma {
 
   export type ActivityLogCreateManyUserInputEnvelope = {
     data: ActivityLogCreateManyUserInput | ActivityLogCreateManyUserInput[]
+    skipDuplicates?: boolean
   }
 
   export type AssetCreateWithoutCreatedByInput = {
@@ -46560,6 +46665,7 @@ export namespace Prisma {
 
   export type AssetCreateManyCreatedByInputEnvelope = {
     data: AssetCreateManyCreatedByInput | AssetCreateManyCreatedByInput[]
+    skipDuplicates?: boolean
   }
 
   export type CalendarEventCreateWithoutCreatedByInput = {
@@ -46591,6 +46697,7 @@ export namespace Prisma {
 
   export type CalendarEventCreateManyCreatedByInputEnvelope = {
     data: CalendarEventCreateManyCreatedByInput | CalendarEventCreateManyCreatedByInput[]
+    skipDuplicates?: boolean
   }
 
   export type CommentCreateWithoutAuthorInput = {
@@ -46620,6 +46727,7 @@ export namespace Prisma {
 
   export type CommentCreateManyAuthorInputEnvelope = {
     data: CommentCreateManyAuthorInput | CommentCreateManyAuthorInput[]
+    skipDuplicates?: boolean
   }
 
   export type NotificationCreateWithoutUserInput = {
@@ -46651,6 +46759,7 @@ export namespace Prisma {
 
   export type NotificationCreateManyUserInputEnvelope = {
     data: NotificationCreateManyUserInput | NotificationCreateManyUserInput[]
+    skipDuplicates?: boolean
   }
 
   export type SessionCreateWithoutUserInput = {
@@ -46672,6 +46781,7 @@ export namespace Prisma {
 
   export type SessionCreateManyUserInputEnvelope = {
     data: SessionCreateManyUserInput | SessionCreateManyUserInput[]
+    skipDuplicates?: boolean
   }
 
   export type TeamMemberCreateWithoutUserInput = {
@@ -46695,6 +46805,7 @@ export namespace Prisma {
 
   export type TeamMemberCreateManyUserInputEnvelope = {
     data: TeamMemberCreateManyUserInput | TeamMemberCreateManyUserInput[]
+    skipDuplicates?: boolean
   }
 
   export type TicketCreateWithoutCreatorInput = {
@@ -46760,6 +46871,7 @@ export namespace Prisma {
 
   export type TicketCreateManyCreatorInputEnvelope = {
     data: TicketCreateManyCreatorInput | TicketCreateManyCreatorInput[]
+    skipDuplicates?: boolean
   }
 
   export type TicketCreateWithoutAssigneeInput = {
@@ -46825,6 +46937,7 @@ export namespace Prisma {
 
   export type TicketCreateManyAssigneeInputEnvelope = {
     data: TicketCreateManyAssigneeInput | TicketCreateManyAssigneeInput[]
+    skipDuplicates?: boolean
   }
 
   export type TicketWatcherCreateWithoutUserInput = {
@@ -46846,6 +46959,7 @@ export namespace Prisma {
 
   export type TicketWatcherCreateManyUserInputEnvelope = {
     data: TicketWatcherCreateManyUserInput | TicketWatcherCreateManyUserInput[]
+    skipDuplicates?: boolean
   }
 
   export type ArticleCreateWithoutAuthorInput = {
@@ -46893,6 +47007,7 @@ export namespace Prisma {
 
   export type ArticleCreateManyAuthorInputEnvelope = {
     data: ArticleCreateManyAuthorInput | ArticleCreateManyAuthorInput[]
+    skipDuplicates?: boolean
   }
 
   export type OrganizationCreateWithoutUsersInput = {
@@ -47845,6 +47960,7 @@ export namespace Prisma {
 
   export type AssetCreateManyOrganizationInputEnvelope = {
     data: AssetCreateManyOrganizationInput | AssetCreateManyOrganizationInput[]
+    skipDuplicates?: boolean
   }
 
   export type CalendarEventCreateWithoutOrganizationInput = {
@@ -47876,6 +47992,7 @@ export namespace Prisma {
 
   export type CalendarEventCreateManyOrganizationInputEnvelope = {
     data: CalendarEventCreateManyOrganizationInput | CalendarEventCreateManyOrganizationInput[]
+    skipDuplicates?: boolean
   }
 
   export type ChatRoomCreateWithoutOrganizationInput = {
@@ -47911,6 +48028,7 @@ export namespace Prisma {
 
   export type ChatRoomCreateManyOrganizationInputEnvelope = {
     data: ChatRoomCreateManyOrganizationInput | ChatRoomCreateManyOrganizationInput[]
+    skipDuplicates?: boolean
   }
 
   export type InventoryCreateWithoutOrganizationInput = {
@@ -47944,6 +48062,7 @@ export namespace Prisma {
 
   export type InventoryCreateManyOrganizationInputEnvelope = {
     data: InventoryCreateManyOrganizationInput | InventoryCreateManyOrganizationInput[]
+    skipDuplicates?: boolean
   }
 
   export type InviteCodeCreateWithoutOrganizationInput = {
@@ -47987,6 +48106,7 @@ export namespace Prisma {
 
   export type InviteCodeCreateManyOrganizationInputEnvelope = {
     data: InviteCodeCreateManyOrganizationInput | InviteCodeCreateManyOrganizationInput[]
+    skipDuplicates?: boolean
   }
 
   export type SavedViewCreateWithoutOrganizationInput = {
@@ -48024,6 +48144,7 @@ export namespace Prisma {
 
   export type SavedViewCreateManyOrganizationInputEnvelope = {
     data: SavedViewCreateManyOrganizationInput | SavedViewCreateManyOrganizationInput[]
+    skipDuplicates?: boolean
   }
 
   export type TagCreateWithoutOrganizationInput = {
@@ -48051,6 +48172,7 @@ export namespace Prisma {
 
   export type TagCreateManyOrganizationInputEnvelope = {
     data: TagCreateManyOrganizationInput | TagCreateManyOrganizationInput[]
+    skipDuplicates?: boolean
   }
 
   export type TeamCreateWithoutOrganizationInput = {
@@ -48084,6 +48206,7 @@ export namespace Prisma {
 
   export type TeamCreateManyOrganizationInputEnvelope = {
     data: TeamCreateManyOrganizationInput | TeamCreateManyOrganizationInput[]
+    skipDuplicates?: boolean
   }
 
   export type TemplateCreateWithoutOrganizationInput = {
@@ -48119,6 +48242,7 @@ export namespace Prisma {
 
   export type TemplateCreateManyOrganizationInputEnvelope = {
     data: TemplateCreateManyOrganizationInput | TemplateCreateManyOrganizationInput[]
+    skipDuplicates?: boolean
   }
 
   export type TicketCreateWithoutOrganizationInput = {
@@ -48184,6 +48308,7 @@ export namespace Prisma {
 
   export type TicketCreateManyOrganizationInputEnvelope = {
     data: TicketCreateManyOrganizationInput | TicketCreateManyOrganizationInput[]
+    skipDuplicates?: boolean
   }
 
   export type UserCreateWithoutOrganizationInput = {
@@ -48273,6 +48398,7 @@ export namespace Prisma {
 
   export type UserCreateManyOrganizationInputEnvelope = {
     data: UserCreateManyOrganizationInput | UserCreateManyOrganizationInput[]
+    skipDuplicates?: boolean
   }
 
   export type ArticleCreateWithoutOrganizationInput = {
@@ -48320,6 +48446,7 @@ export namespace Prisma {
 
   export type ArticleCreateManyOrganizationInputEnvelope = {
     data: ArticleCreateManyOrganizationInput | ArticleCreateManyOrganizationInput[]
+    skipDuplicates?: boolean
   }
 
   export type ArticleCategoryCreateWithoutOrganizationInput = {
@@ -48355,6 +48482,7 @@ export namespace Prisma {
 
   export type ArticleCategoryCreateManyOrganizationInputEnvelope = {
     data: ArticleCategoryCreateManyOrganizationInput | ArticleCategoryCreateManyOrganizationInput[]
+    skipDuplicates?: boolean
   }
 
   export type CSATCreateWithoutOrganizationInput = {
@@ -48382,6 +48510,7 @@ export namespace Prisma {
 
   export type CSATCreateManyOrganizationInputEnvelope = {
     data: CSATCreateManyOrganizationInput | CSATCreateManyOrganizationInput[]
+    skipDuplicates?: boolean
   }
 
   export type AssetUpsertWithWhereUniqueWithoutOrganizationInput = {
@@ -48813,6 +48942,7 @@ export namespace Prisma {
 
   export type ChatRoomCreateManyTeamInputEnvelope = {
     data: ChatRoomCreateManyTeamInput | ChatRoomCreateManyTeamInput[]
+    skipDuplicates?: boolean
   }
 
   export type OrganizationCreateWithoutTeamsInput = {
@@ -48911,6 +49041,7 @@ export namespace Prisma {
 
   export type TeamMemberCreateManyTeamInputEnvelope = {
     data: TeamMemberCreateManyTeamInput | TeamMemberCreateManyTeamInput[]
+    skipDuplicates?: boolean
   }
 
   export type TicketCreateWithoutTeamInput = {
@@ -48976,6 +49107,7 @@ export namespace Prisma {
 
   export type TicketCreateManyTeamInputEnvelope = {
     data: TicketCreateManyTeamInput | TicketCreateManyTeamInput[]
+    skipDuplicates?: boolean
   }
 
   export type ChatRoomUpsertWithWhereUniqueWithoutTeamInput = {
@@ -49374,6 +49506,7 @@ export namespace Prisma {
 
   export type ActivityLogCreateManyTicketInputEnvelope = {
     data: ActivityLogCreateManyTicketInput | ActivityLogCreateManyTicketInput[]
+    skipDuplicates?: boolean
   }
 
   export type AttachmentCreateWithoutTicketInput = {
@@ -49403,6 +49536,7 @@ export namespace Prisma {
 
   export type AttachmentCreateManyTicketInputEnvelope = {
     data: AttachmentCreateManyTicketInput | AttachmentCreateManyTicketInput[]
+    skipDuplicates?: boolean
   }
 
   export type CSATCreateWithoutTicketInput = {
@@ -49455,6 +49589,7 @@ export namespace Prisma {
 
   export type CommentCreateManyTicketInputEnvelope = {
     data: CommentCreateManyTicketInput | CommentCreateManyTicketInput[]
+    skipDuplicates?: boolean
   }
 
   export type UserCreateWithoutCreatedTicketsInput = {
@@ -49748,6 +49883,7 @@ export namespace Prisma {
 
   export type TicketTagCreateManyTicketInputEnvelope = {
     data: TicketTagCreateManyTicketInput | TicketTagCreateManyTicketInput[]
+    skipDuplicates?: boolean
   }
 
   export type TicketWatcherCreateWithoutTicketInput = {
@@ -49769,6 +49905,7 @@ export namespace Prisma {
 
   export type TicketWatcherCreateManyTicketInputEnvelope = {
     data: TicketWatcherCreateManyTicketInput | TicketWatcherCreateManyTicketInput[]
+    skipDuplicates?: boolean
   }
 
   export type ActivityLogUpsertWithWhereUniqueWithoutTicketInput = {
@@ -50668,6 +50805,7 @@ export namespace Prisma {
 
   export type AttachmentCreateManyCommentInputEnvelope = {
     data: AttachmentCreateManyCommentInput | AttachmentCreateManyCommentInput[]
+    skipDuplicates?: boolean
   }
 
   export type UserCreateWithoutCommentsInput = {
@@ -51570,6 +51708,7 @@ export namespace Prisma {
 
   export type TicketTagCreateManyTagInputEnvelope = {
     data: TicketTagCreateManyTagInput | TicketTagCreateManyTagInput[]
+    skipDuplicates?: boolean
   }
 
   export type OrganizationUpsertWithoutTagsInput = {
@@ -52930,6 +53069,7 @@ export namespace Prisma {
 
   export type ArticleCreateManyCategoryInputEnvelope = {
     data: ArticleCreateManyCategoryInput | ArticleCreateManyCategoryInput[]
+    skipDuplicates?: boolean
   }
 
   export type ArticleCategoryCreateWithoutChildrenInput = {
@@ -52996,6 +53136,7 @@ export namespace Prisma {
 
   export type ArticleCategoryCreateManyParentInputEnvelope = {
     data: ArticleCategoryCreateManyParentInput | ArticleCategoryCreateManyParentInput[]
+    skipDuplicates?: boolean
   }
 
   export type OrganizationCreateWithoutArticleCategoriesInput = {
@@ -53264,6 +53405,7 @@ export namespace Prisma {
 
   export type ChatMessageCreateManyChatRoomInputEnvelope = {
     data: ChatMessageCreateManyChatRoomInput | ChatMessageCreateManyChatRoomInput[]
+    skipDuplicates?: boolean
   }
 
   export type OrganizationCreateWithoutChatRoomsInput = {
@@ -53391,6 +53533,7 @@ export namespace Prisma {
 
   export type ChatRoomMemberCreateManyChatRoomInputEnvelope = {
     data: ChatRoomMemberCreateManyChatRoomInput | ChatRoomMemberCreateManyChatRoomInput[]
+    skipDuplicates?: boolean
   }
 
   export type ChatMessageUpsertWithWhereUniqueWithoutChatRoomInput = {
@@ -53720,6 +53863,7 @@ export namespace Prisma {
 
   export type ChatMessageCreateManyReplyToInputEnvelope = {
     data: ChatMessageCreateManyReplyToInput | ChatMessageCreateManyReplyToInput[]
+    skipDuplicates?: boolean
   }
 
   export type ChatRoomCreateWithoutMessagesInput = {
