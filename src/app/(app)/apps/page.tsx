@@ -1,4 +1,6 @@
 "use client";
+// BUILD_VERSION_V2_CLIENT_ONLY
+
 
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
