@@ -1,9 +1,12 @@
 import AppsClient from "./AppsClient";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "App Store - ClearQ",
   description: "Browse and install apps and integrations",
 };
+
 
 import { Suspense } from "react";
 
