@@ -1,3 +1,5 @@
+"use client";
+
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 
@@ -5,8 +7,6 @@ const CheckoutClient = dynamic(() => import("./CheckoutClient"), {
   ssr: false,
   loading: () => <div className="min-h-screen bg-zinc-950 flex items-center justify-center"><div className="h-8 w-8 animate-spin rounded-full border-4 border-teal-500 border-t-transparent" /></div>
 });
-
-export const dynamic = "force-dynamic";
 
 export default function CheckoutPage() {
   return (
