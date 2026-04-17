@@ -69,8 +69,13 @@ export default function CheckoutClient() {
     if (!scriptLoaded || card) return;
 
     const initializeSquare = async () => {
-      const appId = process.env.NEXT_PUBLIC_SQUARE_APP_ID || "sq0idp-W026zWJ-Jo4YtKVHHJdmgw";
-      const locId = process.env.NEXT_PUBLIC_SQUARE_LOCATION_ID || "LA1RGCZD9RG0Z";
+      const appId = process.env.NEXT_PUBLIC_SQUARE_APP_ID;
+      const locId = process.env.NEXT_PUBLIC_SQUARE_LOCATION_ID;
+
+      if (!appId || !locId) {
+        setError("Square configuration missing. Please ensure NEXT_PUBLIC_SQUARE_APP_ID and NEXT_PUBLIC_SQUARE_LOCATION_ID are set in Vercel.");
+        return;
+      }
 
       if (!(window as any).Square) return;
 
@@ -79,7 +84,6 @@ export default function CheckoutClient() {
         const paymentsInstance = await square.payments(appId, locId);
         const cardInstance = await paymentsInstance.card();
         
-        // Ensure container is empty before attaching
         const container = document.getElementById("card-container");
         if (container) {
           container.innerHTML = "";
@@ -89,9 +93,10 @@ export default function CheckoutClient() {
         }
       } catch (e: any) {
         console.error("Square initialization error:", e);
-        setError(`Square Error: ${e.message || "Invalid credentials"}. Please check your Production Location ID.`);
+        setError(`Square SDK Error: ${e.message}. (Verifying: AppID starts with 'sq0idp-', LocationID is valid).`);
       }
     };
+
 
     initializeSquare();
   }, [scriptLoaded, card]);
