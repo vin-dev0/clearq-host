@@ -1,5 +1,6 @@
 export const dynamic = "force-dynamic";
 
+
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth";
 import { notFound } from "next/navigation";
@@ -23,7 +24,6 @@ import {
 } from "lucide-react";
 import { formatRelativeTime } from "@/lib/utils";
 
-export const dynamic = "force-dynamic";
 
 export default async function ReviewPage() {
   const session = await auth();

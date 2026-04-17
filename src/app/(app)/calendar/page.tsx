@@ -1,9 +1,9 @@
 export const dynamic = "force-dynamic";
 
+
 import CalendarClient from "./CalendarClient";
 import { getCalendarEvents } from "@/lib/actions/calendar";
 
-export const dynamic = "force-dynamic";
 
 
 export const metadata = {

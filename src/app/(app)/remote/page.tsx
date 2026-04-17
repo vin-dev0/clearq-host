@@ -1,5 +1,6 @@
 export const dynamic = "force-dynamic";
 
+
 import RemoteClient from "./RemoteClient";
 
 export const metadata = {

@@ -1,11 +1,11 @@
 export const dynamic = "force-dynamic";
 
+
 import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { getAdminArticles, getAdminCategories } from "@/lib/actions/kb";
 import { KBAdminWrapper } from "./KBAdminWrapper";
 
-export const dynamic = "force-dynamic";
 
 export default async function KBPage() {
   const session = await auth();

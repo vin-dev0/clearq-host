@@ -1,5 +1,6 @@
 export const dynamic = "force-dynamic";
 
+
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth";
 import { notFound } from "next/navigation";

@@ -1,5 +1,6 @@
 export const dynamic = "force-dynamic";
 
+
 import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { getAdminCategories } from "@/lib/actions/kb";

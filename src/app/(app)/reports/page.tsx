@@ -1,6 +1,6 @@
 export const dynamic = "force-dynamic";
 
-export const dynamic = "force-dynamic";
+
 
 import ReportsClient from "./ReportsClient";
 import { auth } from "@/lib/auth";
@@ -13,7 +13,6 @@ import {
   getDashboardStats
 } from "@/lib/actions/metrics";
 
-export const dynamic = "force-dynamic";
 
 export default async function ReportsPage() { 
   const session = await auth();
