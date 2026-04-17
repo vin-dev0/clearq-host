@@ -3,15 +3,18 @@ import { auth } from "@/lib/auth";
 import { NextRequest, NextResponse } from "next/server";
 import { revalidatePath } from "next/cache";
 
-// VERCEL VERIFICATION COMMIT
+interface RouteContext {
+  params: Promise<{
+    id: string;
+  }>;
+}
+
 export async function PATCH(
-  r: NextRequest,
-  c: { params: Promise<{ id: string }> }
+  request: NextRequest,
+  context: RouteContext
 ) {
   try {
-    const { id } = await c.params;
-
-
+    const { id } = await context.params;
     const session = await auth();
 
     const orgId = (session?.user as any)?.organizationId;
@@ -20,7 +23,7 @@ export async function PATCH(
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const body = await r.json();
+    const body = await request.json();
     const { subject, description, priority, status } = body;
 
     const ticket = await prisma.ticket.update({
