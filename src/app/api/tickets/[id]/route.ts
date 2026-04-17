@@ -1,14 +1,15 @@
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { revalidatePath } from "next/cache";
 
 export async function PATCH(
-  req: Request,
-  { params }: { params: Promise<{ id: string }> }
+  request: NextRequest,
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = await params;
+    const { id } = await context.params;
+
     const session = await auth();
 
     const orgId = (session?.user as any)?.organizationId;
@@ -17,7 +18,7 @@ export async function PATCH(
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const body = await req.json();
+    const body = await request.json();
     const { subject, description, priority, status } = body;
 
     const ticket = await prisma.ticket.update({
