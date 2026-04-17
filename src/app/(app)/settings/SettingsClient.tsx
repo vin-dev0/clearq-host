@@ -52,8 +52,9 @@ interface Organization {
   plan: string;
 }
 
-export default function SettingsClient() {
+export default function SettingsClient({ user }: { user: any }) {
   const { data: session, update } = useSession();
+
   const router = useRouter();
   const [activeTab, setActiveTab] = React.useState("profile");
   const [inviteCode, setInviteCode] = React.useState("");
