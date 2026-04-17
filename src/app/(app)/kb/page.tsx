@@ -3,6 +3,9 @@ import { redirect } from "next/navigation";
 import { getAdminArticles, getAdminCategories } from "@/lib/actions/kb";
 import { KBAdminClient } from "./KBAdminClient";
 
+export const dynamic = "force-dynamic";
+
+
 export default async function KBPage() {
   const session = await auth();
   if (!session?.user?.id) {
