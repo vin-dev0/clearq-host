@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import DashboardClient from "./DashboardClient";
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";

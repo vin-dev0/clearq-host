@@ -1,3 +1,7 @@
+export const dynamic = "force-dynamic";
+
+export const dynamic = "force-dynamic";
+
 import ReportsClient from "./ReportsClient";
 import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";

@@ -1,3 +1,7 @@
+export const dynamic = "force-dynamic";
+
+export const dynamic = "force-dynamic";
+
 import InventoryClient from "./InventoryClient";
 export const dynamic = "force-dynamic";
 export default function InventoryPage() {

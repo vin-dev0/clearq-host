@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import NewTicketClient from "./NewTicketClient";
 import { getTags } from "@/lib/actions/tags";
 import { getAgents } from "@/lib/actions/users";

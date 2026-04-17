@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import TagsClient from "./TagsClient";
 import { getTags } from "@/lib/actions/tags";
 import { redirect } from "next/navigation";

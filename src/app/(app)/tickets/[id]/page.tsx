@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import TicketDetailClient from "./TicketDetailClient";
 import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";

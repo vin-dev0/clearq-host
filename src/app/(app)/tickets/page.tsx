@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import TicketsClient from "./TicketsClient";
 import { getTickets } from "@/lib/actions/tickets";
 import { redirect } from "next/navigation";

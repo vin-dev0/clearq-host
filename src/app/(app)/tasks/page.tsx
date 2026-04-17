@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import TasksClient from "./TasksClient";
 
 export const metadata = {

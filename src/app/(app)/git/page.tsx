@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import GitClient from "./GitClient";
 
 export const metadata = {
