@@ -7,16 +7,18 @@ const DB_FILE = path.join(process.cwd(), "integrations_db.json");
 
 export async function getIntegrationsConfig() {
   try {
-    if (!fs.existsSync(DB_FILE)) {
+    // Return empty defaults if we are in a build environment or file is missing
+    if (typeof window === "undefined" && !fs.existsSync(DB_FILE)) {
       return { apps: {}, webhooks: {} };
     }
     const data = fs.readFileSync(DB_FILE, "utf-8");
     return JSON.parse(data);
   } catch (error) {
-    console.error("Failed to read integrations DB:", error);
+    // Fail silently during build/initialization
     return { apps: {}, webhooks: {} };
   }
 }
+
 
 export async function saveIntegrationsConfig(config: any) {
   try {
