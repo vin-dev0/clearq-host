@@ -126,9 +126,11 @@ export function Sidebar() {
     setMounted(true);
   }, []);
 
-  // Use false for SSR, actual value on client
   const isCollapsed = mounted ? sidebarCollapsed : false;
-  const isLight = theme === "light";
+  // Force dark mode
+  const isLight = false;
+
+
   const userPlan = (session?.user as any)?.plan || "STARTER";
   const userRole = (session?.user as any)?.role || "CLIENT";
   const isAdmin = userRole === "ADMIN";
@@ -233,9 +235,8 @@ export function Sidebar() {
           "group flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-200",
           isActive
             ? "bg-teal-500/10 text-teal-600"
-            : isLight
-              ? "text-slate-500 hover:bg-slate-100 hover:text-slate-900"
-              : "text-zinc-400 hover:bg-zinc-800/50 hover:text-white"
+            : "text-zinc-400 hover:bg-zinc-800/50 hover:text-white"
+
         )}
       >
         <Icon
@@ -254,8 +255,9 @@ export function Sidebar() {
               </span>
             )}
             {count !== undefined && (
-              <span className={cn("text-xs", isLight ? "text-slate-400" : "text-zinc-500")}>{count}</span>
+              <span className="text-zinc-500">{count}</span>
             )}
+
           </>
         )}
       </Link>
@@ -274,28 +276,21 @@ export function Sidebar() {
     <aside
       className={cn(
         "fixed left-0 top-0 z-40 flex h-screen flex-col border-r transition-all duration-300",
-        isLight
-          ? "border-slate-200 bg-white"
-          : "border-zinc-800 bg-zinc-950",
+        "border-zinc-800 bg-zinc-950",
         isCollapsed ? "w-16" : "w-64"
+
       )}
     >
       {/* Logo */}
-      <div className={cn(
-        "flex h-16 items-center justify-between border-b px-4",
-        isLight ? "border-slate-200" : "border-zinc-800"
-      )}>
+      <div className="flex h-16 items-center justify-between border-b px-4 border-zinc-800">
+
         <Logo collapsed={isCollapsed} />
         <button
           onClick={() => collapseSidebar(!sidebarCollapsed)}
           className={cn(
-            "rounded-lg p-1.5 transition-colors",
-            isLight
-              ? "text-slate-400 hover:bg-slate-100 hover:text-slate-900"
-              : "text-zinc-400 hover:bg-zinc-800 hover:text-white",
-            isCollapsed && (isLight
-              ? "absolute -right-3 top-6 rounded-full border border-slate-300 bg-white"
-              : "absolute -right-3 top-6 rounded-full border border-zinc-700 bg-zinc-900")
+            "rounded-lg p-1.5 transition-colors text-zinc-400 hover:bg-zinc-800 hover:text-white",
+            isCollapsed && "absolute -right-3 top-6 rounded-full border border-zinc-700 bg-zinc-900"
+
           )}
         >
           {isCollapsed ? (
