@@ -29,13 +29,19 @@ export default function DemoLoginPage() {
     try {
       const creds = await setupDemo();
       setDemoCreds(creds);
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
-      setError("Failed to initialize demo environment. Please try again.");
+      if (err.message.startsWith("COOLDOWN:")) {
+        const mins = err.message.split(":")[1];
+        setError(`The demo environment is currently resetting. Please try again in ${mins} minute${mins === "1" ? "" : "s"}.`);
+      } else {
+        setError("Failed to initialize demo environment. Please try again.");
+      }
     } finally {
       setIsLoading(false);
     }
   };
+
 
   const handleSignIn = async () => {
     if (!demoCreds) return;
