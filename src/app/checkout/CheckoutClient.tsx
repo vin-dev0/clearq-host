@@ -26,10 +26,6 @@ import { cn } from "@/lib/utils";
 import Script from "next/script";
 import { processSquarePayment } from "@/lib/actions/square-payments";
 
-// These should ideally come from env, but for testing we can define placeholders
-// NEXT_PUBLIC_SQUARE_APP_ID
-// NEXT_PUBLIC_SQUARE_LOCATION_ID
-
 export default function CheckoutClient() {
   const { data: session } = useSession();
   const router = useRouter();
@@ -46,6 +42,7 @@ export default function CheckoutClient() {
   // Square payment state
   const [payments, setPayments] = React.useState<any>(null);
   const [card, setCard] = React.useState<any>(null);
+  const isInitializing = React.useRef(false);
 
   // Pricing Logic
   const userCount = selectedPlan === "PRO" ? 7 : (selectedPlan === "TESTING" ? 7 : 3);
@@ -54,85 +51,80 @@ export default function CheckoutClient() {
   const getPrice = () => {
     if (selectedPlan === "TESTING") return 0.01;
     const base = selectedPlan === "PRO" ? 468 : 228;
-    const clientFee = isClientFeePaid ? 0 : 250; // Zero if already paid once
+    const clientFee = isClientFeePaid ? 0 : 250; 
     return base + clientFee;
   };
   
   const annualTotal = getPrice();
-
   const isRenewal = isClientFeePaid && selectedPlan !== "TESTING";
 
-
-  // Initialize Square when script is loaded and DOM is ready
+  // Initialize Square
   React.useEffect(() => {
-    let cardInstance: any = null;
+    if (isInitializing.current) return;
+    
+    const runInit = async () => {
+      if (card) return;
+      isInitializing.current = true;
 
-    const initializeSquare = async () => {
       const appId = process.env.NEXT_PUBLIC_SQUARE_APP_ID;
       const locId = process.env.NEXT_PUBLIC_SQUARE_LOCATION_ID;
 
       if (!appId || !locId) {
-        setError("Square configuration missing. Please ensure NEXT_PUBLIC_SQUARE_APP_ID and NEXT_PUBLIC_SQUARE_LOCATION_ID are set in Vercel.");
+        setError("Square configuration missing. Please ensure credentials are set in Vercel.");
+        isInitializing.current = false;
         return;
       }
 
-      const runInit = async () => {
-        if (card) return; // Already initialized
-
+      const runSquare = async () => {
         try {
           const square = (window as any).Square;
+          if (!square) {
+            isInitializing.current = false;
+            return;
+          }
+
           const paymentsInstance = await square.payments(appId, locId);
-          cardInstance = await paymentsInstance.card();
+          const localCardInstance = await paymentsInstance.card();
           
           const container = document.getElementById("card-container");
           if (container) {
             container.innerHTML = "";
-            await cardInstance.attach("#card-container");
+            await localCardInstance.attach("#card-container");
             setPayments(paymentsInstance);
-            setCard(cardInstance);
+            setCard(localCardInstance);
           }
         } catch (e: any) {
           console.error("Square initialization error:", e);
           setError(`Square SDK Error: ${e.message}`);
+          isInitializing.current = false;
         }
       };
 
-      // Wait for window.Square to be available if it's not yet
       if (!(window as any).Square) {
         let attempts = 0;
-        const checkSquare = setInterval(async () => {
+        const checkSquare = setInterval(() => {
           attempts++;
           if ((window as any).Square) {
             clearInterval(checkSquare);
-            await runInit();
+            runSquare();
           }
-          if (attempts > 50) clearInterval(checkSquare); // Timeout after 5s
+          if (attempts > 50) {
+            clearInterval(checkSquare);
+            isInitializing.current = false;
+          }
         }, 100);
-        return;
+      } else {
+        await runSquare();
       }
-
-      await runInit();
-
     };
 
-    initializeSquare();
+    runInit();
 
     return () => {
-      if (cardInstance) {
-        try {
-          cardInstance.destroy();
-        } catch (e) {
-          console.error("Cleanup error:", e);
-        }
-      }
+      // Allow re-initialization if component is truly unmounted and remounted
+      isInitializing.current = false;
     };
   }, [card]);
-
-  const handleSquareLoad = () => {
-    // This will still trigger on first cold load
-    setCard(null); // Force re-init if needed
-  };
-
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -152,7 +144,6 @@ export default function CheckoutClient() {
 
       const result = await card.tokenize();
       if (result.status === "OK") {
-        // Send token to our server action
         const response = await processSquarePayment(
           result.token, 
           selectedPlan, 
@@ -189,18 +180,15 @@ export default function CheckoutClient() {
           </div>
           <h1 className="text-3xl font-bold">Access Unlocked</h1>
           <p className="text-zinc-400">
-            Your {selectedPlan} account is now active with {userCount} staff seats. 
-            An annual charge of ${annualTotal.toLocaleString()} has been processed by Square.
+            Your {selectedPlan} account is now active.
+            Annual charge of ${annualTotal.toLocaleString()} processed.
           </p>
           {!session && inviteCode && (
             <div className="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl space-y-4">
               <div className="text-zinc-500 text-xs uppercase font-black tracking-widest">Your Admin Invite Code</div>
-              <div className="text-4xl font-mono font-bold text-teal-400 tracking-wider">
+              <div className="text-4xl font-mono font-bold text-teal-400 tracking-wider font-mono">
                 {inviteCode}
               </div>
-              <p className="text-zinc-500 text-sm">
-                Copy this code and use it to register your primary administrator account.
-              </p>
             </div>
           )}
           <Button 
@@ -225,11 +213,10 @@ export default function CheckoutClient() {
     <div className="min-h-screen bg-zinc-950 flex flex-col lg:flex-row font-sans selection:bg-teal-500/30">
       <Script 
         src="https://web.squarecdn.com/v1/square.js" 
-        onLoad={handleSquareLoad}
         strategy="afterInteractive"
       />
 
-      {/* Left Side - Details & Plan Picker */}
+      {/* Left Side - Details */}
       <div className="w-full lg:w-1/2 p-8 lg:p-16 flex flex-col justify-between overflow-y-auto max-h-screen">
         <div className="max-w-md mx-auto lg:mx-0">
           <Link href="/" className="inline-block mb-12">
@@ -244,19 +231,14 @@ export default function CheckoutClient() {
                 onClick={() => setSelectedPlan("STARTER")}
                 className={cn(
                   "p-5 rounded-2xl border transition-all text-left flex items-center justify-between group",
-                  selectedPlan === "STARTER" 
-                    ? "border-teal-500 bg-teal-500/5 ring-1 ring-teal-500" 
-                    : "border-zinc-800 bg-zinc-900/50 hover:bg-zinc-900/80"
+                  selectedPlan === "STARTER" ? "border-teal-500 bg-teal-500/5 ring-1 ring-teal-500" : "border-zinc-800 bg-zinc-900/50"
                 )}
               >
                 <div>
                    <div className="font-bold text-white text-lg">Starter</div>
-                   <div className="text-zinc-500 text-xs">Up to 3 staff members • $19/mo</div>
+                   <div className="text-zinc-500 text-xs">Up to 3 staff seats</div>
                 </div>
-                <div className={cn(
-                  "h-6 w-6 rounded-full border flex items-center justify-center transition-colors",
-                  selectedPlan === "STARTER" ? "bg-teal-500 border-teal-500" : "border-zinc-700 group-hover:border-zinc-500"
-                )}>
+                <div className={cn("h-6 w-6 rounded-full border flex items-center justify-center", selectedPlan === "STARTER" ? "bg-teal-500" : "border-zinc-700")}>
                    {selectedPlan === "STARTER" && <Check className="h-4 w-4 text-white" />}
                 </div>
               </button>
@@ -265,76 +247,36 @@ export default function CheckoutClient() {
                 type="button"
                 onClick={() => setSelectedPlan("PRO")}
                 className={cn(
-                  "p-5 rounded-2xl border transition-all text-left flex items-center justify-between group relative overflow-hidden",
-                  selectedPlan === "PRO" 
-                    ? "border-teal-500 bg-teal-500/5 ring-1 ring-teal-500" 
-                    : "border-zinc-800 bg-zinc-900/50 hover:bg-zinc-900/80"
+                  "p-5 rounded-2xl border transition-all text-left flex items-center justify-between group",
+                  selectedPlan === "PRO" ? "border-teal-500 bg-teal-500/5 ring-1 ring-teal-500" : "border-zinc-800 bg-zinc-900/50"
                 )}
               >
                 <div>
-                   <div className="font-bold text-white text-lg flex items-center gap-2">
-                     Professional
-                     <span className="text-[10px] bg-teal-500 text-white px-2 py-0.5 rounded-full uppercase tracking-tighter">Best Value</span>
-                   </div>
-                   <div className="text-zinc-500 text-xs">Up to 7 staff members • $39/mo</div>
+                   <div className="font-bold text-white text-lg">Professional</div>
+                   <div className="text-zinc-500 text-xs">Up to 7 staff seats</div>
                 </div>
-                <div className={cn(
-                  "h-6 w-6 rounded-full border flex items-center justify-center transition-colors",
-                  selectedPlan === "PRO" ? "bg-teal-500 border-teal-500" : "border-zinc-700 group-hover:border-zinc-500"
-                )}>
+                <div className={cn("h-6 w-6 rounded-full border flex items-center justify-center", selectedPlan === "PRO" ? "bg-teal-500" : "border-zinc-700")}>
                    {selectedPlan === "PRO" && <Check className="h-4 w-4 text-white" />}
                 </div>
               </button>
-
             </div>
           </div>
 
-          <div className="mb-8">
-            <h2 className="text-sm font-bold text-zinc-500 uppercase tracking-widest mb-4 font-mono">Client Capacity</h2>
-            <div className="bg-teal-500/10 border border-teal-500/20 p-5 rounded-2xl flex items-center justify-between gap-4">
-              <div className="flex items-center gap-4">
-                <div className="h-10 w-10 bg-teal-500 rounded-full flex items-center justify-center shrink-0">
-                  <UsersIcon className="h-5 w-5 text-black" />
-                </div>
-                <div>
-                  <p className="text-sm text-teal-100 font-medium leading-none mb-1">
-                    Support for 10-50 Clients/Customers
-                  </p>
-                  <p className="text-[10px] text-teal-500/60 uppercase font-black tracking-widest">
-                    {isClientFeePaid ? "Renewal Discount Applied" : "One-time setup fee included"}
-                  </p>
-                </div>
-              </div>
-              {isClientFeePaid && (
-                <div className="px-3 py-1 bg-teal-500 text-black text-[10px] font-black rounded-full uppercase tracking-widest animate-pulse">
-                  Lifetime Access
-                </div>
-              )}
-            </div>
-          </div>
-
-          <div className="space-y-1 bg-zinc-900/80 p-8 rounded-3xl border border-zinc-800 shadow-2xl relative overflow-hidden group">
-             <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
-                <ShieldCheck className="h-24 w-24 text-teal-400 rotate-12" />
+          <div className="mb-8 p-8 bg-zinc-900 rounded-3xl border border-zinc-800 shadow-2xl">
+             <div className="flex items-center justify-between mb-4">
+                <p className="text-zinc-500 font-bold text-xs uppercase tracking-widest">Annual Total</p>
+                <div className="px-2 py-1 rounded bg-teal-500/20 text-[10px] font-black text-teal-400 uppercase">Billed Yearly</div>
              </div>
-             <div className="flex items-center justify-between">
-                <p className="text-zinc-400 font-bold text-xs uppercase tracking-widest">Annual Subscription</p>
-                <div className="px-2 py-1 rounded bg-teal-500/20 text-[10px] font-black text-teal-400 uppercase tracking-tighter">Billed Yearly</div>
-             </div>
-             <div className="flex items-baseline gap-2 mt-4">
+             <div className="flex items-baseline gap-2">
                 <h1 className="text-6xl font-black text-white tracking-tighter">${annualTotal.toLocaleString()}</h1>
                 <span className="text-zinc-500 font-medium">/yr</span>
              </div>
-             <p className="text-zinc-500 text-[11px] mt-4 flex items-center gap-2 border-t border-zinc-800/80 pt-4">
-                <UsersIcon className="h-4 w-4 text-teal-500/50" />
-                Includes access for <strong>up to {userCount} staff seats</strong> on the {selectedPlan} plan.
-             </p>
           </div>
         </div>
 
-        <div className="mt-12 flex items-center gap-3 text-zinc-600 text-[10px] uppercase font-black tracking-widest">
+        <div className="mt-12 flex items-center gap-3 text-zinc-600 text-[10px] uppercase font-black tracking-widest font-mono">
           <Lock className="h-3 w-3" />
-          PCI-DSS Secure Payment • Square Gateway
+          Secure PCI Payment Gateway
         </div>
       </div>
 
@@ -345,54 +287,32 @@ export default function CheckoutClient() {
             <div className="space-y-6">
               <h2 className="text-2xl font-black text-white tracking-tight">Payment Details</h2>
               
-              <div className="space-y-4">
-                {!session && (
-                  <>
-                    <div className="space-y-2">
-                      <label className="text-[10px] font-black text-zinc-500 uppercase tracking-widest ml-1">Email Address</label>
-                      <input 
-                        type="email" 
-                        name="email"
-                        className="w-full bg-zinc-800 border-2 border-zinc-700/50 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-teal-500 transition-all placeholder-zinc-600"
-                        placeholder="name@company.com"
-                        required
-                      />
-                    </div>
+              {!session && (
+                <div className="space-y-4">
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black text-zinc-500 uppercase tracking-widest ml-1">Email</label>
+                    <input 
+                      type="email" 
+                      name="email"
+                      className="w-full bg-zinc-800 border-2 border-zinc-700/50 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-teal-500"
+                      placeholder="name@company.com"
+                      required
+                    />
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <input name="name" placeholder="Name" required className="bg-zinc-800 border-2 border-zinc-700/50 rounded-2xl px-4 py-4 text-white" />
+                    <input name="company" placeholder="Company" required className="bg-zinc-800 border-2 border-zinc-700/50 rounded-2xl px-4 py-4 text-white" />
+                  </div>
+                </div>
+              )}
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <label className="text-[10px] font-black text-zinc-500 uppercase tracking-widest ml-1">Full Name</label>
-                        <input 
-                          type="text" 
-                          name="name"
-                          className="w-full bg-zinc-800 border-2 border-zinc-700/50 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-teal-500 transition-all placeholder-zinc-600"
-                          placeholder="John Doe"
-                          required
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <label className="text-[10px] font-black text-zinc-500 uppercase tracking-widest ml-1">Company Name</label>
-                        <input 
-                          type="text" 
-                          name="company"
-                          className="w-full bg-zinc-800 border-2 border-zinc-700/50 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-teal-500 transition-all placeholder-zinc-600"
-                          placeholder="Acme Inc"
-                          required
-                        />
-                      </div>
-                    </div>
-                  </>
-                )}
-              </div>
-
-              {/* Square Card Container */}
               <div className="space-y-2">
                 <label className="text-[10px] font-black text-zinc-500 uppercase tracking-widest ml-1">Secure Card Input</label>
                 <div 
                   id="card-container" 
-                  className="w-full bg-zinc-800 border-2 border-zinc-700/50 rounded-2xl px-5 py-6 transition-all min-h-[100px]"
+                  className="w-full bg-zinc-800 border-2 border-zinc-700/50 rounded-2xl px-5 py-6 min-h-[100px]"
                 >
-                  {/* Square Card will be injected here */}
+                  {/* Square Card injected here */}
                 </div>
               </div>
 
@@ -404,34 +324,19 @@ export default function CheckoutClient() {
               )}
             </div>
 
-            <div className="space-y-4 pt-4">
-              <Button 
-                type="submit" 
-                size="lg" 
-                className={cn(
-                  "w-full h-20 text-xl font-black rounded-3xl transition-all active:scale-[0.97] shadow-3xl",
-                  "bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-white shadow-teal-500/30",
-                  loading && "opacity-50"
-                )}
-                disabled={loading || !card}
-              >
-                {loading ? (
-                  <Loader2 className="h-8 w-8 animate-spin" />
-                ) : (
-                  <div className="flex flex-col items-center">
-                    <span>{selectedPlan === "TESTING" ? "Verify System ($0.01)" : "Unlock Enterprise Access"}</span>
-                    <span className="text-[10px] opacity-70 mt-1 uppercase tracking-widest">Billed via Square Security</span>
-                  </div>
-                )}
-              </Button>
-            </div>
+            <Button 
+              type="submit" 
+              size="lg" 
+              disabled={loading || !card}
+              className={cn(
+                "w-full h-20 text-xl font-black rounded-3xl transition-all",
+                "bg-gradient-to-r from-teal-500 to-cyan-500 text-white shadow-3xl shadow-teal-500/20",
+                loading && "opacity-50"
+              )}
+            >
+              {loading ? <Loader2 className="h-8 w-8 animate-spin" /> : "Unlock Enterprise Access"}
+            </Button>
           </form>
-
-          <footer className="mt-12 pt-8 border-t border-zinc-800/50 text-center">
-            <p className="text-[10px] text-zinc-600 leading-normal max-w-sm mx-auto uppercase font-black tracking-widest">
-              Powered by Square Security
-            </p>
-          </footer>
         </div>
       </div>
     </div>
