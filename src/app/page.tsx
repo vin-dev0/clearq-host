@@ -196,45 +196,87 @@ export default function LandingPage() {
               </div>
             </motion.div>
 
-            {/* Dashboard Mockup - New Isometric Image */}
+            {/* Dashboard Mockup - Refined Code-Based Isometric */}
             <motion.div
-              style={{ y: y1 }}
-              initial={{ opacity: 0, y: 100, rotateX: 5 }}
-              animate={{ opacity: 1, y: 0, rotateX: 0 }}
+              style={{ 
+                y: y1,
+                perspective: "2000px" 
+              }}
+              initial={{ opacity: 0, y: 100 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2, ease: "easeOut", delay: 0.4 }}
               className="relative mt-24 flex justify-center"
             >
-              <div className="relative mx-auto max-w-[1100px] overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/20 p-2 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.8)] backdrop-blur-3xl group">
-                <div className="absolute inset-0 bg-gradient-to-tr from-teal-500/20 via-transparent to-cyan-500/20 pointer-events-none z-10 opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
+              <motion.div 
+                style={{ 
+                  rotateX: "25deg", 
+                  rotateY: "-15deg", 
+                  rotateZ: "5deg" 
+                }}
+                className="relative mx-auto max-w-[1000px] w-full overflow-hidden rounded-2xl border border-white/10 bg-zinc-900/40 p-1 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.7)] backdrop-blur-3xl transform-gpu transition-transform duration-700 hover:rotate-x-[20deg] hover:rotate-y-[-10deg]"
+              >
+                <div className="absolute inset-0 bg-gradient-to-tr from-teal-500/10 via-transparent to-cyan-500/10 pointer-events-none" />
                 
-                {/* Browser Controls Wrapper */}
-                <div className="flex items-center gap-2 border-b border-white/5 px-6 py-4 bg-zinc-900/40 relative z-20">
+                {/* Simplified Browser Interface */}
+                <div className="flex items-center gap-2 border-b border-white/5 px-4 py-3 bg-zinc-900/60">
                   <div className="flex gap-1.5">
-                    <div className="h-3 w-3 rounded-full bg-rose-500/20 border border-rose-500/30" />
-                    <div className="h-3 w-3 rounded-full bg-amber-500/20 border border-amber-500/30" />
-                    <div className="h-3 w-3 rounded-full bg-emerald-500/20 border border-emerald-500/30" />
+                    <div className="h-2 w-2 rounded-full bg-white/10" />
+                    <div className="h-2 w-2 rounded-full bg-white/10" />
+                    <div className="h-2 w-2 rounded-full bg-white/10" />
                   </div>
-                  <div className="ml-6 flex items-center gap-2 text-[11px] font-bold text-zinc-500 uppercase tracking-[0.2em] italic">
-                    <Layout className="h-4 w-4" />
-                    ClearQ Platform v2.0
+                  <div className="ml-4 flex items-center gap-2 text-[9px] font-bold text-zinc-500 uppercase tracking-widest opacity-50">
+                    ClearQ Cloud Instance
                   </div>
                 </div>
 
-                {/* The Image */}
-                <img 
-                  src="/images/hero-mockup.png" 
-                  alt="ClearQ Dashboard Mockup" 
-                  className="w-full h-auto transition-transform duration-700 group-hover:scale-[1.02]"
-                />
+                <div className="aspect-[16/9] bg-zinc-950 p-8 md:p-12 overflow-hidden">
+                  <div className="grid h-full grid-cols-12 gap-6">
+                    {/* Main Feed Area */}
+                    <div className="col-span-8 flex flex-col gap-6">
+                      <div className="h-32 rounded-xl border border-zinc-800 bg-zinc-900/50 p-6 relative overflow-hidden">
+                         <div className="absolute top-0 left-0 w-1 h-full bg-teal-500" />
+                         <div className="h-4 w-32 bg-zinc-800 rounded mb-4" />
+                         <div className="space-y-3">
+                            <div className="h-2 w-full bg-zinc-800/50 rounded" />
+                            <div className="h-2 w-2/3 bg-zinc-800/50 rounded" />
+                         </div>
+                      </div>
+                      <div className="flex-1 rounded-xl border border-zinc-800 bg-zinc-900/30 p-6">
+                         <div className="h-4 w-24 bg-zinc-800 rounded mb-8" />
+                         <div className="flex items-end gap-2 h-32">
+                            {[60, 40, 90, 70, 50, 80, 45, 85].map((h, i) => (
+                              <motion.div 
+                                key={i}
+                                initial={{ height: 0 }}
+                                animate={{ height: `${h}%` }}
+                                transition={{ delay: 0.6 + (i * 0.1), duration: 1 }}
+                                className="flex-1 bg-gradient-to-t from-teal-500/20 to-teal-400 rounded-t-sm" 
+                              />
+                            ))}
+                         </div>
+                      </div>
+                    </div>
 
-                {/* Overlays */}
-                <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-3xl pointer-events-none" />
-              </div>
+                    {/* Sidebar Stats Area */}
+                    <div className="col-span-4 flex flex-col gap-4">
+                      {[1, 2, 3, 4].map((i) => (
+                        <div key={i} className="flex-1 rounded-xl border border-zinc-800 bg-zinc-900/50 p-4">
+                          <div className="flex items-center gap-3 mb-2">
+                            <div className="h-6 w-6 rounded-lg bg-zinc-800" />
+                            <div className="h-2 w-16 bg-zinc-800 rounded" />
+                          </div>
+                          <div className="h-4 w-12 bg-zinc-800/40 rounded" />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
 
-              {/* Enhanced Mesh Gradient Glow */}
-              <div className="absolute -inset-20 -z-10 bg-teal-500/20 blur-[140px] opacity-40 pointer-events-none animate-pulse" />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 w-[120%] h-[120%] bg-cyan-500/10 blur-[180px] opacity-20 pointer-events-none" />
+              {/* Subtle Back-Glow */}
+              <div className="absolute -inset-10 -z-10 bg-teal-500/10 blur-[100px] opacity-20 pointer-events-none" />
             </motion.div>
+
 
           </div>
         </section>
