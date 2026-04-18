@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Logo } from "@/components/branding/Logo";
 import { Button } from "@/components/ui/button";
 import { Modal, ModalHeader, ModalBody } from "@/components/ui/modal";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   Ticket,
   Zap,
@@ -93,8 +93,6 @@ const stats = [
 export default function LandingPage() {
   const [showPrivacyModal, setShowPrivacyModal] = React.useState(false);
   const [showContactModal, setShowContactModal] = React.useState(false);
-  const { scrollY } = useScroll();
-  const y1 = useTransform(scrollY, [0, 500], [0, 150]);
 
   return (
     <div className="min-h-screen bg-zinc-950 text-zinc-100 selection:bg-teal-500/30 font-sans overflow-x-hidden">
@@ -198,10 +196,7 @@ export default function LandingPage() {
 
             {/* Dashboard Mockup - Floating & Interactive */}
             <motion.div
-              style={{ 
-                y: y1,
-                perspective: "2000px" 
-              }}
+              style={{ perspective: "2000px" }}
               initial={{ opacity: 0, y: 100 }}
               animate={{ 
                 opacity: 1, 
@@ -217,6 +212,8 @@ export default function LandingPage() {
               }}
               className="relative mt-24 flex justify-center"
             >
+
+
               <motion.div 
                 initial={{ 
                   rotateX: 25, 
