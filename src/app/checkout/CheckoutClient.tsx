@@ -62,11 +62,10 @@ export default function CheckoutClient() {
 
   const isRenewal = isClientFeePaid && selectedPlan !== "TESTING";
 
-  const [scriptLoaded, setScriptLoaded] = React.useState(false);
 
   // Initialize Square when script is loaded and DOM is ready
   React.useEffect(() => {
-    if (!scriptLoaded || card) return;
+    let cardInstance: any = null;
 
     const initializeSquare = async () => {
       const appId = process.env.NEXT_PUBLIC_SQUARE_APP_ID;
@@ -77,33 +76,62 @@ export default function CheckoutClient() {
         return;
       }
 
-      if (!(window as any).Square) return;
-
-      try {
-        const square = (window as any).Square;
-        const paymentsInstance = await square.payments(appId, locId);
-        const cardInstance = await paymentsInstance.card();
-        
-        const container = document.getElementById("card-container");
-        if (container) {
-          container.innerHTML = "";
-          await cardInstance.attach("#card-container");
-          setPayments(paymentsInstance);
-          setCard(cardInstance);
-        }
-      } catch (e: any) {
-        console.error("Square initialization error:", e);
-        setError(`Square SDK Error: ${e.message}. (Verifying: AppID starts with 'sq0idp-', LocationID is valid).`);
+      // Wait for window.Square to be available if it's not yet
+      if (!(window as any).Square) {
+        let attempts = 0;
+        const checkSquare = setInterval(async () => {
+          attempts++;
+          if ((window as any).Square) {
+            clearInterval(checkSquare);
+            await runInit();
+          }
+          if (attempts > 50) clearInterval(checkSquare); // Timeout after 5s
+        }, 100);
+        return;
       }
+
+      const runInit = async () => {
+        if (card) return; // Already initialized
+
+        try {
+          const square = (window as any).Square;
+          const paymentsInstance = await square.payments(appId, locId);
+          cardInstance = await paymentsInstance.card();
+          
+          const container = document.getElementById("card-container");
+          if (container) {
+            container.innerHTML = "";
+            await cardInstance.attach("#card-container");
+            setPayments(paymentsInstance);
+            setCard(cardInstance);
+          }
+        } catch (e: any) {
+          console.error("Square initialization error:", e);
+          setError(`Square SDK Error: ${e.message}`);
+        }
+      };
+
+      await runInit();
     };
 
-
     initializeSquare();
-  }, [scriptLoaded, card]);
+
+    return () => {
+      if (cardInstance) {
+        try {
+          cardInstance.destroy();
+        } catch (e) {
+          console.error("Cleanup error:", e);
+        }
+      }
+    };
+  }, [card]);
 
   const handleSquareLoad = () => {
-    setScriptLoaded(true);
+    // This will still trigger on first cold load
+    setCard(null); // Force re-init if needed
   };
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
