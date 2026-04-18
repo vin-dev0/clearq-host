@@ -526,10 +526,6 @@ model AccessLog {
   id         String   @id @default(cuid())
   userId     String?
   userEmail  String?
-  ipAddress  String
-  country    String?
-  city       String?
-  region     String?
   userAgent  String?
   browser    String?
   os         String?
@@ -542,7 +538,6 @@ model AccessLog {
   createdAt  DateTime @default(now())
 
   @@index([userId])
-  @@index([ipAddress])
   @@index([createdAt])
   @@index([action])
 }

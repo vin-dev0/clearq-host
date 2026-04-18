@@ -96,22 +96,25 @@ export async function DELETE(request: NextRequest) {
     }
 
     const searchParams = request.nextUrl.searchParams;
-    const days = parseInt(searchParams.get("days") || "30");
+    const days = searchParams.get("days");
+    const all = searchParams.get("all") === "true";
 
-    const cutoffDate = new Date();
-    cutoffDate.setDate(cutoffDate.getDate() - days);
+    let where = {};
+    if (!all) {
+      const daysNum = parseInt(days || "30");
+      const cutoffDate = new Date();
+      cutoffDate.setDate(cutoffDate.getDate() - daysNum);
+      where = { createdAt: { lt: cutoffDate } };
+    }
 
-    const result = await prisma.accessLog.deleteMany({
-      where: {
-        createdAt: { lt: cutoffDate },
-      },
-    });
+    const result = await prisma.accessLog.deleteMany({ where });
 
     return NextResponse.json({
       success: true,
       deleted: result.count,
-      message: `Deleted ${result.count} logs older than ${days} days`,
+      message: all ? "All logs deleted" : `Deleted ${result.count} logs older than ${days} days`,
     });
+
   } catch (error) {
     console.error("Error deleting access logs:", error);
     return NextResponse.json({ error: "Failed to delete access logs" }, { status: 500 });

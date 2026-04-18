@@ -31569,10 +31569,6 @@ export namespace Prisma {
     id: string | null
     userId: string | null
     userEmail: string | null
-    ipAddress: string | null
-    country: string | null
-    city: string | null
-    region: string | null
     userAgent: string | null
     browser: string | null
     os: string | null
@@ -31589,10 +31585,6 @@ export namespace Prisma {
     id: string | null
     userId: string | null
     userEmail: string | null
-    ipAddress: string | null
-    country: string | null
-    city: string | null
-    region: string | null
     userAgent: string | null
     browser: string | null
     os: string | null
@@ -31609,10 +31601,6 @@ export namespace Prisma {
     id: number
     userId: number
     userEmail: number
-    ipAddress: number
-    country: number
-    city: number
-    region: number
     userAgent: number
     browser: number
     os: number
@@ -31639,10 +31627,6 @@ export namespace Prisma {
     id?: true
     userId?: true
     userEmail?: true
-    ipAddress?: true
-    country?: true
-    city?: true
-    region?: true
     userAgent?: true
     browser?: true
     os?: true
@@ -31659,10 +31643,6 @@ export namespace Prisma {
     id?: true
     userId?: true
     userEmail?: true
-    ipAddress?: true
-    country?: true
-    city?: true
-    region?: true
     userAgent?: true
     browser?: true
     os?: true
@@ -31679,10 +31659,6 @@ export namespace Prisma {
     id?: true
     userId?: true
     userEmail?: true
-    ipAddress?: true
-    country?: true
-    city?: true
-    region?: true
     userAgent?: true
     browser?: true
     os?: true
@@ -31786,10 +31762,6 @@ export namespace Prisma {
     id: string
     userId: string | null
     userEmail: string | null
-    ipAddress: string
-    country: string | null
-    city: string | null
-    region: string | null
     userAgent: string | null
     browser: string | null
     os: string | null
@@ -31825,10 +31797,6 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     userEmail?: boolean
-    ipAddress?: boolean
-    country?: boolean
-    city?: boolean
-    region?: boolean
     userAgent?: boolean
     browser?: boolean
     os?: boolean
@@ -31845,10 +31813,6 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     userEmail?: boolean
-    ipAddress?: boolean
-    country?: boolean
-    city?: boolean
-    region?: boolean
     userAgent?: boolean
     browser?: boolean
     os?: boolean
@@ -31865,10 +31829,6 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     userEmail?: boolean
-    ipAddress?: boolean
-    country?: boolean
-    city?: boolean
-    region?: boolean
     userAgent?: boolean
     browser?: boolean
     os?: boolean
@@ -31889,10 +31849,6 @@ export namespace Prisma {
       id: string
       userId: string | null
       userEmail: string | null
-      ipAddress: string
-      country: string | null
-      city: string | null
-      region: string | null
       userAgent: string | null
       browser: string | null
       os: string | null
@@ -32299,10 +32255,6 @@ export namespace Prisma {
     readonly id: FieldRef<"AccessLog", 'String'>
     readonly userId: FieldRef<"AccessLog", 'String'>
     readonly userEmail: FieldRef<"AccessLog", 'String'>
-    readonly ipAddress: FieldRef<"AccessLog", 'String'>
-    readonly country: FieldRef<"AccessLog", 'String'>
-    readonly city: FieldRef<"AccessLog", 'String'>
-    readonly region: FieldRef<"AccessLog", 'String'>
     readonly userAgent: FieldRef<"AccessLog", 'String'>
     readonly browser: FieldRef<"AccessLog", 'String'>
     readonly os: FieldRef<"AccessLog", 'String'>
@@ -36044,10 +35996,6 @@ export namespace Prisma {
     id: 'id',
     userId: 'userId',
     userEmail: 'userEmail',
-    ipAddress: 'ipAddress',
-    country: 'country',
-    city: 'city',
-    region: 'region',
     userAgent: 'userAgent',
     browser: 'browser',
     os: 'os',
@@ -38560,10 +38508,6 @@ export namespace Prisma {
     id?: StringFilter<"AccessLog"> | string
     userId?: StringNullableFilter<"AccessLog"> | string | null
     userEmail?: StringNullableFilter<"AccessLog"> | string | null
-    ipAddress?: StringFilter<"AccessLog"> | string
-    country?: StringNullableFilter<"AccessLog"> | string | null
-    city?: StringNullableFilter<"AccessLog"> | string | null
-    region?: StringNullableFilter<"AccessLog"> | string | null
     userAgent?: StringNullableFilter<"AccessLog"> | string | null
     browser?: StringNullableFilter<"AccessLog"> | string | null
     os?: StringNullableFilter<"AccessLog"> | string | null
@@ -38580,10 +38524,6 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrderInput | SortOrder
     userEmail?: SortOrderInput | SortOrder
-    ipAddress?: SortOrder
-    country?: SortOrderInput | SortOrder
-    city?: SortOrderInput | SortOrder
-    region?: SortOrderInput | SortOrder
     userAgent?: SortOrderInput | SortOrder
     browser?: SortOrderInput | SortOrder
     os?: SortOrderInput | SortOrder
@@ -38603,10 +38543,6 @@ export namespace Prisma {
     NOT?: AccessLogWhereInput | AccessLogWhereInput[]
     userId?: StringNullableFilter<"AccessLog"> | string | null
     userEmail?: StringNullableFilter<"AccessLog"> | string | null
-    ipAddress?: StringFilter<"AccessLog"> | string
-    country?: StringNullableFilter<"AccessLog"> | string | null
-    city?: StringNullableFilter<"AccessLog"> | string | null
-    region?: StringNullableFilter<"AccessLog"> | string | null
     userAgent?: StringNullableFilter<"AccessLog"> | string | null
     browser?: StringNullableFilter<"AccessLog"> | string | null
     os?: StringNullableFilter<"AccessLog"> | string | null
@@ -38623,10 +38559,6 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrderInput | SortOrder
     userEmail?: SortOrderInput | SortOrder
-    ipAddress?: SortOrder
-    country?: SortOrderInput | SortOrder
-    city?: SortOrderInput | SortOrder
-    region?: SortOrderInput | SortOrder
     userAgent?: SortOrderInput | SortOrder
     browser?: SortOrderInput | SortOrder
     os?: SortOrderInput | SortOrder
@@ -38651,10 +38583,6 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"AccessLog"> | string
     userId?: StringNullableWithAggregatesFilter<"AccessLog"> | string | null
     userEmail?: StringNullableWithAggregatesFilter<"AccessLog"> | string | null
-    ipAddress?: StringWithAggregatesFilter<"AccessLog"> | string
-    country?: StringNullableWithAggregatesFilter<"AccessLog"> | string | null
-    city?: StringNullableWithAggregatesFilter<"AccessLog"> | string | null
-    region?: StringNullableWithAggregatesFilter<"AccessLog"> | string | null
     userAgent?: StringNullableWithAggregatesFilter<"AccessLog"> | string | null
     browser?: StringNullableWithAggregatesFilter<"AccessLog"> | string | null
     os?: StringNullableWithAggregatesFilter<"AccessLog"> | string | null
@@ -41511,10 +41439,6 @@ export namespace Prisma {
     id?: string
     userId?: string | null
     userEmail?: string | null
-    ipAddress: string
-    country?: string | null
-    city?: string | null
-    region?: string | null
     userAgent?: string | null
     browser?: string | null
     os?: string | null
@@ -41531,10 +41455,6 @@ export namespace Prisma {
     id?: string
     userId?: string | null
     userEmail?: string | null
-    ipAddress: string
-    country?: string | null
-    city?: string | null
-    region?: string | null
     userAgent?: string | null
     browser?: string | null
     os?: string | null
@@ -41551,10 +41471,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     userEmail?: NullableStringFieldUpdateOperationsInput | string | null
-    ipAddress?: StringFieldUpdateOperationsInput | string
-    country?: NullableStringFieldUpdateOperationsInput | string | null
-    city?: NullableStringFieldUpdateOperationsInput | string | null
-    region?: NullableStringFieldUpdateOperationsInput | string | null
     userAgent?: NullableStringFieldUpdateOperationsInput | string | null
     browser?: NullableStringFieldUpdateOperationsInput | string | null
     os?: NullableStringFieldUpdateOperationsInput | string | null
@@ -41571,10 +41487,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     userEmail?: NullableStringFieldUpdateOperationsInput | string | null
-    ipAddress?: StringFieldUpdateOperationsInput | string
-    country?: NullableStringFieldUpdateOperationsInput | string | null
-    city?: NullableStringFieldUpdateOperationsInput | string | null
-    region?: NullableStringFieldUpdateOperationsInput | string | null
     userAgent?: NullableStringFieldUpdateOperationsInput | string | null
     browser?: NullableStringFieldUpdateOperationsInput | string | null
     os?: NullableStringFieldUpdateOperationsInput | string | null
@@ -41591,10 +41503,6 @@ export namespace Prisma {
     id?: string
     userId?: string | null
     userEmail?: string | null
-    ipAddress: string
-    country?: string | null
-    city?: string | null
-    region?: string | null
     userAgent?: string | null
     browser?: string | null
     os?: string | null
@@ -41611,10 +41519,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     userEmail?: NullableStringFieldUpdateOperationsInput | string | null
-    ipAddress?: StringFieldUpdateOperationsInput | string
-    country?: NullableStringFieldUpdateOperationsInput | string | null
-    city?: NullableStringFieldUpdateOperationsInput | string | null
-    region?: NullableStringFieldUpdateOperationsInput | string | null
     userAgent?: NullableStringFieldUpdateOperationsInput | string | null
     browser?: NullableStringFieldUpdateOperationsInput | string | null
     os?: NullableStringFieldUpdateOperationsInput | string | null
@@ -41631,10 +41535,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     userEmail?: NullableStringFieldUpdateOperationsInput | string | null
-    ipAddress?: StringFieldUpdateOperationsInput | string
-    country?: NullableStringFieldUpdateOperationsInput | string | null
-    city?: NullableStringFieldUpdateOperationsInput | string | null
-    region?: NullableStringFieldUpdateOperationsInput | string | null
     userAgent?: NullableStringFieldUpdateOperationsInput | string | null
     browser?: NullableStringFieldUpdateOperationsInput | string | null
     os?: NullableStringFieldUpdateOperationsInput | string | null
@@ -43637,10 +43537,6 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     userEmail?: SortOrder
-    ipAddress?: SortOrder
-    country?: SortOrder
-    city?: SortOrder
-    region?: SortOrder
     userAgent?: SortOrder
     browser?: SortOrder
     os?: SortOrder
@@ -43661,10 +43557,6 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     userEmail?: SortOrder
-    ipAddress?: SortOrder
-    country?: SortOrder
-    city?: SortOrder
-    region?: SortOrder
     userAgent?: SortOrder
     browser?: SortOrder
     os?: SortOrder
@@ -43681,10 +43573,6 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     userEmail?: SortOrder
-    ipAddress?: SortOrder
-    country?: SortOrder
-    city?: SortOrder
-    region?: SortOrder
     userAgent?: SortOrder
     browser?: SortOrder
     os?: SortOrder

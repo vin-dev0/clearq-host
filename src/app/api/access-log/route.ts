@@ -41,27 +41,15 @@ export async function POST(request: NextRequest) {
     const headersList = await headers();
     const body = await request.json();
 
-    // IP Logging Disabled for Privacy
-    const ipAddress = "REDACTED";
-    
     // Get user agent
     const userAgent = headersList.get("user-agent");
     const { browser, os, device } = parseUserAgent(userAgent);
-
-    // Geo Logging Disabled
-    const country = null;
-    const city = null;
-    const region = null;
 
     // Create access log
     const accessLog = await prisma.accessLog.create({
       data: {
         userId: session?.user?.id || null,
         userEmail: session?.user?.email || body.email || null,
-        ipAddress,
-        country,
-        city,
-        region,
         userAgent,
         browser,
         os,
@@ -73,6 +61,7 @@ export async function POST(request: NextRequest) {
         metadata: JSON.stringify(body.metadata || {}),
       },
     });
+
 
 
     return NextResponse.json({ success: true, id: accessLog.id });

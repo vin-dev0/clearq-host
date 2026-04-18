@@ -26,10 +26,6 @@ interface AccessLog {
   id: string;
   userId: string | null;
   userEmail: string | null;
-  ipAddress: string;
-  country: string | null;
-  city: string | null;
-  region: string | null;
   userAgent: string | null;
   browser: string | null;
   os: string | null;
@@ -74,6 +70,7 @@ export default function ActivityPage() {
   const [total, setTotal] = React.useState(0);
   const [actions, setActions] = React.useState<string[]>([]);
   const [stats, setStats] = React.useState<{ action: string; _count: { action: number } }[]>([]);
+  const [isWiping, setIsWiping] = React.useState(false);
 
   const fetchLogs = React.useCallback(async () => {
     setLoading(true);
@@ -111,15 +108,30 @@ export default function ActivityPage() {
     fetchLogs();
   };
 
+  const wipeLogs = async () => {
+    if (!window.confirm("CRITICAL: Are you sure you want to delete ALL access logs? This will wipe the entire history permanently.")) return;
+    
+    setIsWiping(true);
+    try {
+      const res = await fetch("/api/admin/access-logs?all=true", { method: "DELETE" });
+      if (res.ok) {
+        alert("Log history has been completely wiped.");
+        fetchLogs();
+      }
+    } catch (e) {
+      alert("Failed to wipe logs.");
+    } finally {
+      setIsWiping(false);
+    }
+  };
+
   const exportLogs = () => {
     const csv = [
-      ["Time", "User", "IP", "Location", "Device", "Browser", "OS", "Action", "Path"].join(","),
+      ["Time", "User", "Device", "Browser", "OS", "Action", "Path"].join(","),
       ...logs.map((log) =>
         [
           new Date(log.createdAt).toISOString(),
           log.userEmail || "Anonymous",
-          log.ipAddress,
-          [log.city, log.region, log.country].filter(Boolean).join(" ") || "Unknown",
           log.device || "Unknown",
           log.browser || "Unknown",
           log.os || "Unknown",
@@ -149,6 +161,14 @@ export default function ActivityPage() {
         </div>
         <div className="flex gap-3">
           <button
+            onClick={wipeLogs}
+            disabled={isWiping}
+            className="flex items-center gap-2 rounded-lg border border-rose-500/20 bg-rose-500/5 px-4 py-2 text-sm text-rose-400 hover:bg-rose-500/10 transition-colors"
+          >
+            {isWiping ? <RefreshCw className="h-4 w-4 animate-spin" /> : <Shield className="h-4 w-4" />}
+            Wipe All Logs
+          </button>
+          <button
             onClick={exportLogs}
             className="flex items-center gap-2 rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-sm text-white hover:bg-zinc-700"
           >
@@ -164,6 +184,7 @@ export default function ActivityPage() {
           </button>
         </div>
       </div>
+
 
       {/* Stats */}
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
