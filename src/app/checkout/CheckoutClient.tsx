@@ -76,20 +76,6 @@ export default function CheckoutClient() {
         return;
       }
 
-      // Wait for window.Square to be available if it's not yet
-      if (!(window as any).Square) {
-        let attempts = 0;
-        const checkSquare = setInterval(async () => {
-          attempts++;
-          if ((window as any).Square) {
-            clearInterval(checkSquare);
-            await runInit();
-          }
-          if (attempts > 50) clearInterval(checkSquare); // Timeout after 5s
-        }, 100);
-        return;
-      }
-
       const runInit = async () => {
         if (card) return; // Already initialized
 
@@ -111,7 +97,22 @@ export default function CheckoutClient() {
         }
       };
 
+      // Wait for window.Square to be available if it's not yet
+      if (!(window as any).Square) {
+        let attempts = 0;
+        const checkSquare = setInterval(async () => {
+          attempts++;
+          if ((window as any).Square) {
+            clearInterval(checkSquare);
+            await runInit();
+          }
+          if (attempts > 50) clearInterval(checkSquare); // Timeout after 5s
+        }, 100);
+        return;
+      }
+
       await runInit();
+
     };
 
     initializeSquare();
