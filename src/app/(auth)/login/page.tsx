@@ -111,7 +111,7 @@ function LoginPageContent() {
                 <Input
                   type="email"
                   name="email"
-                  placeholder="name@getclearq.net"
+                  placeholder="name@getclearq.com"
                   icon={<Mail className="h-4 w-4 text-zinc-500" />}
                   className="h-12 bg-zinc-900/50 border-zinc-800 focus:border-teal-500/50 rounded-xl"
                   required
@@ -173,7 +173,7 @@ function LoginPageContent() {
               >
                 <div className="rounded-xl bg-teal-500/5 p-4 border border-teal-500/10">
                   <h3 className="text-teal-400 font-bold text-sm mb-1 uppercase tracking-wider">2FA Verification</h3>
-                  <p className="text-zinc-400">hello@getclearq.net</p>
+                  <p className="text-zinc-400">hello@getclearq.com</p>
                   <p className="text-zinc-500 text-xs">Enter the 6-digit code sent to your agent email.</p>
                 </div>
                 

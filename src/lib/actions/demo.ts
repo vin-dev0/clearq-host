@@ -74,7 +74,7 @@ export async function setupDemo() {
   // We'll delete any stuck record before creating a fresh one.
   await prisma.organization.deleteMany({ where: { isDemo: true } });
 
-  const demoEmail = `demo-${uuidv4().slice(0, 8)}@getclearq.net`;
+  const demoEmail = `demo-${uuidv4().slice(0, 8)}@getclearq.com`;
   const demoPassword = "demo123";
   const passwordHash = await bcrypt.hash(demoPassword, 10);
   
