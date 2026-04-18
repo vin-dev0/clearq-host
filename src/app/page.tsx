@@ -562,8 +562,8 @@ export default function LandingPage() {
         <ModalHeader onClose={() => setShowPrivacyModal(false)}>Privacy & Data Security</ModalHeader>
         <ModalBody>
           <div className="space-y-6 text-zinc-300 p-6 leading-relaxed">
-            <p className="text-lg text-white font-medium">Your data is yours. Period.</p>
-            <p className="text-sm">We use AES-256 at rest and TLS 1.3 in transit. We have zero knowledge of your encryption keys when managed by KMS. Our team undergoes quarterly SOC 2 audits to ensure your data stays private and secure.</p>
+            <p className="text-lg text-white font-medium">Privacy is a human right.</p>
+            <p className="text-sm">We do not store IP addresses. We do not track your location. We do not sell your data. Every interaction is encrypted and your information remains under your absolute control. Period.</p>
           </div>
         </ModalBody>
       </Modal>
