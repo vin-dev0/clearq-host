@@ -22,13 +22,29 @@ export async function cleanupExpiredDemos() {
   });
 
   if (expiredOrgs.length > 0) {
-    console.log(`[DEMO] Cleaning up ${expiredOrgs.length} fully expired demo organizations`);
+    const orgIds = expiredOrgs.map(org => org.id);
+    console.log(`[DEMO] Cleaning up ${orgIds.length} fully expired demo organizations and related records`);
+    
+    // Explicitly delete related data that might cause FKEY violations during cascade
+    // We do this in a specific order to satisfy constraints
+    await prisma.comment.deleteMany({
+      where: { ticket: { organizationId: { in: orgIds } } }
+    });
+
+    await prisma.ticket.deleteMany({
+      where: { organizationId: { in: orgIds } }
+    });
+
+    await prisma.teamMember.deleteMany({
+      where: { team: { organizationId: { in: orgIds } } }
+    });
+
+    await prisma.team.deleteMany({
+      where: { organizationId: { in: orgIds } }
+    });
+
     await prisma.organization.deleteMany({
-      where: {
-        id: {
-          in: expiredOrgs.map(org => org.id)
-        }
-      }
+      where: { id: { in: orgIds } }
     });
   }
 }
