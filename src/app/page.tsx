@@ -196,25 +196,48 @@ export default function LandingPage() {
               </div>
             </motion.div>
 
-            {/* Dashboard Mockup - Vibrant Color Upgrade */}
+            {/* Dashboard Mockup - Floating & Interactive */}
             <motion.div
               style={{ 
                 y: y1,
                 perspective: "2000px" 
               }}
               initial={{ opacity: 0, y: 100 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.2, ease: "easeOut", delay: 0.4 }}
+              animate={{ 
+                opacity: 1, 
+                y: [0, -15, 0], // Floating effect
+              }}
+              transition={{ 
+                opacity: { duration: 1.2, delay: 0.4 },
+                y: { 
+                  duration: 6, 
+                  repeat: Infinity, 
+                  ease: "easeInOut" 
+                } 
+              }}
               className="relative mt-24 flex justify-center"
             >
               <motion.div 
-                style={{ 
-                  rotateX: "25deg", 
-                  rotateY: "-15deg", 
-                  rotateZ: "5deg" 
+                initial={{ 
+                  rotateX: 25, 
+                  rotateY: -15, 
+                  rotateZ: 5 
                 }}
-                className="relative mx-auto max-w-[1000px] w-full overflow-hidden rounded-2xl border border-white/10 bg-zinc-900/40 p-1 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.7)] backdrop-blur-3xl transform-gpu transition-transform duration-700 hover:rotate-x-[20deg]"
+                whileHover={{ 
+                  rotateX: 0, 
+                  rotateY: 0, 
+                  rotateZ: 0,
+                  scale: 1.02,
+                  y: -10
+                }}
+                transition={{ 
+                  type: "spring", 
+                  stiffness: 100, 
+                  damping: 15 
+                }}
+                className="relative mx-auto max-w-[1000px] w-full overflow-hidden rounded-2xl border border-white/10 bg-zinc-900/40 p-1 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.7)] backdrop-blur-3xl transform-gpu cursor-pointer z-20"
               >
+
                 {/* Dynamic Mesh Overlays */}
                 <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-violet-600/10 blur-[100px] pointer-events-none" />
                 <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-teal-500/10 blur-[100px] pointer-events-none" />
