@@ -41,21 +41,17 @@ export async function POST(request: NextRequest) {
     const headersList = await headers();
     const body = await request.json();
 
-    // Get IP address - check various headers
-    const forwardedFor = headersList.get("x-forwarded-for");
-    const realIp = headersList.get("x-real-ip");
-    const cfConnectingIp = headersList.get("cf-connecting-ip");
-    
-    let ipAddress = cfConnectingIp || realIp || forwardedFor?.split(",")[0]?.trim() || "Unknown";
+    // IP Logging Disabled for Privacy
+    const ipAddress = "REDACTED";
     
     // Get user agent
     const userAgent = headersList.get("user-agent");
     const { browser, os, device } = parseUserAgent(userAgent);
 
-    // Get geo data from Cloudflare or Vercel headers if available
-    const country = headersList.get("cf-ipcountry") || headersList.get("x-vercel-ip-country") || null;
-    const city = headersList.get("cf-ipcity") || headersList.get("x-vercel-ip-city") || null;
-    const region = headersList.get("cf-region") || headersList.get("x-vercel-ip-country-region") || null;
+    // Geo Logging Disabled
+    const country = null;
+    const city = null;
+    const region = null;
 
     // Create access log
     const accessLog = await prisma.accessLog.create({
@@ -77,6 +73,7 @@ export async function POST(request: NextRequest) {
         metadata: JSON.stringify(body.metadata || {}),
       },
     });
+
 
     return NextResponse.json({ success: true, id: accessLog.id });
   } catch (error) {

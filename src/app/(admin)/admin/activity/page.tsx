@@ -144,7 +144,7 @@ export default function ActivityPage() {
         <div>
           <h1 className="text-3xl font-bold text-white">Activity Logs</h1>
           <p className="text-zinc-400 mt-1">
-            Monitor user access, IPs, locations, and devices in real-time.
+            Monitor real-time system events, browser versions, and platform metadata.
           </p>
         </div>
         <div className="flex gap-3">
@@ -202,7 +202,7 @@ export default function ActivityPage() {
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search by email, IP, path, or location..."
+              placeholder="Search by email, path, or browser..."
               className="w-full rounded-lg border border-zinc-700 bg-zinc-900 py-2 pl-10 pr-4 text-white placeholder:text-zinc-500 focus:border-teal-500 focus:outline-none"
             />
           </div>
@@ -231,8 +231,7 @@ export default function ActivityPage() {
             <tr className="border-b border-zinc-800">
               <th className="text-left py-3 px-4 text-zinc-400 font-medium text-sm">Time</th>
               <th className="text-left py-3 px-4 text-zinc-400 font-medium text-sm">User</th>
-              <th className="text-left py-3 px-4 text-zinc-400 font-medium text-sm">IP / Location</th>
-              <th className="text-left py-3 px-4 text-zinc-400 font-medium text-sm">Device</th>
+              <th className="text-left py-3 px-4 text-zinc-400 font-medium text-sm">Platform & Browser</th>
               <th className="text-left py-3 px-4 text-zinc-400 font-medium text-sm">Action</th>
               <th className="text-left py-3 px-4 text-zinc-400 font-medium text-sm">Path</th>
             </tr>
@@ -240,14 +239,14 @@ export default function ActivityPage() {
           <tbody>
             {loading ? (
               <tr>
-                <td colSpan={6} className="px-4 py-12 text-center text-zinc-500">
+                <td colSpan={5} className="px-4 py-12 text-center text-zinc-500">
                   <RefreshCw className="mx-auto h-6 w-6 animate-spin" />
                   <p className="mt-2">Loading activity logs...</p>
                 </td>
               </tr>
             ) : logs.length === 0 ? (
               <tr>
-                <td colSpan={6} className="px-4 py-12 text-center text-zinc-500">
+                <td colSpan={5} className="px-4 py-12 text-center text-zinc-500">
                   <Activity className="mx-auto h-8 w-8" />
                   <p className="mt-2">No activity logs found</p>
                   <p className="text-sm">Activity will appear here as users browse the site</p>
@@ -277,41 +276,34 @@ export default function ActivityPage() {
                     </div>
                   </td>
                   <td className="py-3 px-4">
-                    <div className="flex items-center gap-2">
-                      <Globe className="h-4 w-4 text-zinc-500" />
+                    <div className="flex items-center gap-3">
+                      <div className={cn("flex h-10 w-10 items-center justify-center rounded-xl bg-zinc-800 text-zinc-400 border border-zinc-700/50")}>
+                        {deviceIcons[log.device || "Desktop"] || <Monitor className="h-5 w-5" />}
+                      </div>
                       <div>
-                        <p className="text-sm font-mono text-white">{log.ipAddress}</p>
-                        {(log.city || log.country) && (
-                          <p className="flex items-center gap-1 text-xs text-zinc-500">
-                            <MapPin className="h-3 w-3" />
-                            {[log.city, log.region, log.country].filter(Boolean).join(", ")}
-                          </p>
-                        )}
+                        <p className="text-sm font-bold text-white">{log.browser || "Unknown"}</p>
+                        <p className="text-xs text-zinc-500 flex items-center gap-1.5 font-medium">
+                          {log.os || "Unknown"}
+                          <span className="h-1 w-1 rounded-full bg-zinc-700" />
+                          {log.device || "Desktop"}
+                        </p>
                       </div>
                     </div>
                   </td>
                   <td className="py-3 px-4">
-                    <div className="flex items-center gap-2">
-                      {deviceIcons[log.device || "Desktop"] || <Monitor className="h-4 w-4 text-zinc-500" />}
-                      <div>
-                        <p className="text-sm text-white">{log.browser || "Unknown"}</p>
-                        <p className="text-xs text-zinc-500">{log.os || "Unknown"}</p>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="py-3 px-4">
-                    <span className={cn("text-xs px-2 py-1 rounded-full", actionColors[log.action] || "bg-zinc-800 text-zinc-400")}>
+                    <span className={cn("text-xs px-2 py-1 rounded-full font-bold", actionColors[log.action] || "bg-zinc-800 text-zinc-400")}>
                       {log.action.replace("_", " ")}
                     </span>
                   </td>
-                  <td className="py-3 px-4">
-                    <p className="max-w-[150px] truncate text-sm font-mono text-zinc-400">{log.path}</p>
+                  <td className="py-3 px-4 font-mono">
+                    <p className="max-w-[200px] truncate text-sm text-zinc-500">{log.path}</p>
                   </td>
                 </tr>
               ))
             )}
           </tbody>
         </table>
+
 
         {/* Pagination */}
         {totalPages > 1 && (

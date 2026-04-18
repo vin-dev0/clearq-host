@@ -28,10 +28,9 @@ export async function GET(request: NextRequest) {
     if (search) {
       where.OR = [
         { userEmail: { contains: search } },
-        { ipAddress: { contains: search } },
         { path: { contains: search } },
-        { country: { contains: search } },
-        { city: { contains: search } },
+        { browser: { contains: search } },
+        { os: { contains: search } },
       ];
     }
 
