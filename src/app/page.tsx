@@ -196,7 +196,7 @@ export default function LandingPage() {
               </div>
             </motion.div>
 
-            {/* Dashboard Mockup - Refined Code-Based Isometric */}
+            {/* Dashboard Mockup - Vibrant Color Upgrade */}
             <motion.div
               style={{ 
                 y: y1,
@@ -213,19 +213,26 @@ export default function LandingPage() {
                   rotateY: "-15deg", 
                   rotateZ: "5deg" 
                 }}
-                className="relative mx-auto max-w-[1000px] w-full overflow-hidden rounded-2xl border border-white/10 bg-zinc-900/40 p-1 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.7)] backdrop-blur-3xl transform-gpu transition-transform duration-700 hover:rotate-x-[20deg] hover:rotate-y-[-10deg]"
+                className="relative mx-auto max-w-[1000px] w-full overflow-hidden rounded-2xl border border-white/10 bg-zinc-900/40 p-1 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.7)] backdrop-blur-3xl transform-gpu transition-transform duration-700 hover:rotate-x-[20deg]"
               >
-                <div className="absolute inset-0 bg-gradient-to-tr from-teal-500/10 via-transparent to-cyan-500/10 pointer-events-none" />
+                {/* Dynamic Mesh Overlays */}
+                <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-violet-600/10 blur-[100px] pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-teal-500/10 blur-[100px] pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-teal-500/5 via-transparent to-violet-500/5 pointer-events-none" />
                 
                 {/* Simplified Browser Interface */}
-                <div className="flex items-center gap-2 border-b border-white/5 px-4 py-3 bg-zinc-900/60">
+                <div className="flex items-center justify-between border-b border-white/5 px-4 py-3 bg-zinc-900/60">
                   <div className="flex gap-1.5">
-                    <div className="h-2 w-2 rounded-full bg-white/10" />
-                    <div className="h-2 w-2 rounded-full bg-white/10" />
-                    <div className="h-2 w-2 rounded-full bg-white/10" />
+                    <div className="h-2 w-2 rounded-full bg-rose-500/40 border border-rose-500/30" />
+                    <div className="h-2 w-2 rounded-full bg-amber-500/40 border border-amber-500/30" />
+                    <div className="h-2 w-2 rounded-full bg-emerald-500/40 border border-emerald-500/30" />
                   </div>
-                  <div className="ml-4 flex items-center gap-2 text-[9px] font-bold text-zinc-500 uppercase tracking-widest opacity-50">
-                    ClearQ Cloud Instance
+                  <div className="flex items-center gap-2 text-[9px] font-bold text-teal-400 uppercase tracking-widest opacity-80 italic">
+                    <Sparkles className="h-3 w-3" />
+                    ClearQ Enterprise v2.5
+                  </div>
+                  <div className="flex gap-2">
+                    <div className="h-2 w-8 bg-zinc-800 rounded-full" />
                   </div>
                 </div>
 
@@ -233,25 +240,37 @@ export default function LandingPage() {
                   <div className="grid h-full grid-cols-12 gap-6">
                     {/* Main Feed Area */}
                     <div className="col-span-8 flex flex-col gap-6">
-                      <div className="h-32 rounded-xl border border-zinc-800 bg-zinc-900/50 p-6 relative overflow-hidden">
-                         <div className="absolute top-0 left-0 w-1 h-full bg-teal-500" />
-                         <div className="h-4 w-32 bg-zinc-800 rounded mb-4" />
+                      <div className="h-32 rounded-xl border border-teal-500/20 bg-teal-500/5 p-6 relative overflow-hidden group/card shadow-[inset_0_0_20px_rgba(20,184,166,0.05)]">
+                         <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-teal-400 to-cyan-500" />
+                         <div className="flex justify-between items-center mb-4">
+                            <div className="h-4 w-32 bg-teal-500/20 rounded-full" />
+                            <div className="h-5 w-5 rounded-full bg-teal-500/10 border border-teal-500/20 animate-pulse" />
+                         </div>
                          <div className="space-y-3">
-                            <div className="h-2 w-full bg-zinc-800/50 rounded" />
-                            <div className="h-2 w-2/3 bg-zinc-800/50 rounded" />
+                            <div className="h-2 w-full bg-zinc-800/80 rounded" />
+                            <div className="h-2 w-2/3 bg-zinc-800/40 rounded" />
                          </div>
                       </div>
-                      <div className="flex-1 rounded-xl border border-zinc-800 bg-zinc-900/30 p-6">
-                         <div className="h-4 w-24 bg-zinc-800 rounded mb-8" />
-                         <div className="flex items-end gap-2 h-32">
-                            {[60, 40, 90, 70, 50, 80, 45, 85].map((h, i) => (
+                      
+                      <div className="flex-1 rounded-xl border border-zinc-800 bg-zinc-900/30 p-6 relative">
+                         <div className="flex justify-between items-center mb-8">
+                            <div className="h-4 w-24 bg-zinc-800 rounded-full" />
+                            <div className="flex gap-1">
+                               <div className="h-1.5 w-1.5 rounded-full bg-violet-500" />
+                               <div className="h-1.5 w-1.5 rounded-full bg-teal-500" />
+                            </div>
+                         </div>
+                         <div className="flex items-end gap-3 h-32 px-4">
+                            {[60, 40, 95, 70, 50, 80, 45, 85, 65, 75].map((h, i) => (
                               <motion.div 
                                 key={i}
                                 initial={{ height: 0 }}
                                 animate={{ height: `${h}%` }}
-                                transition={{ delay: 0.6 + (i * 0.1), duration: 1 }}
-                                className="flex-1 bg-gradient-to-t from-teal-500/20 to-teal-400 rounded-t-sm" 
-                              />
+                                transition={{ delay: 0.6 + (i * 0.08), duration: 1 }}
+                                className={`flex-1 rounded-t-lg relative group/bar`} 
+                              >
+                                <div className={`absolute inset-0 bg-gradient-to-t ${i % 3 === 0 ? 'from-violet-600 to-violet-400' : 'from-teal-600 to-cyan-400'} opacity-80 rounded-t-lg transition-all group-hover/bar:opacity-100 group-hover/bar:shadow-[0_0_15px_rgba(20,184,166,0.5)]`} />
+                              </motion.div>
                             ))}
                          </div>
                       </div>
@@ -260,12 +279,17 @@ export default function LandingPage() {
                     {/* Sidebar Stats Area */}
                     <div className="col-span-4 flex flex-col gap-4">
                       {[1, 2, 3, 4].map((i) => (
-                        <div key={i} className="flex-1 rounded-xl border border-zinc-800 bg-zinc-900/50 p-4">
-                          <div className="flex items-center gap-3 mb-2">
-                            <div className="h-6 w-6 rounded-lg bg-zinc-800" />
-                            <div className="h-2 w-16 bg-zinc-800 rounded" />
+                        <div key={i} className={`flex-1 rounded-xl border ${i === 2 ? 'border-violet-500/30 bg-violet-500/5 shadow-[0_0_30px_rgba(139,92,246,0.05)]' : 'border-zinc-800 bg-zinc-900/50'} p-5 transition-transform hover:scale-105 duration-300`}>
+                          <div className="flex items-center gap-3 mb-3">
+                            <div className={`h-8 w-8 rounded-xl ${i === 2 ? 'bg-violet-500/20 text-violet-400' : 'bg-zinc-800 text-zinc-400'} flex items-center justify-center`}>
+                              {i === 1 && <Users className="h-4 w-4" />}
+                              {i === 2 && <Zap className="h-4 w-4" />}
+                              {i === 3 && <MessageSquare className="h-4 w-4" />}
+                              {i === 4 && <Shield className="h-4 w-4" />}
+                            </div>
+                            <div className={`h-2 w-20 ${i === 2 ? 'bg-violet-500/20' : 'bg-zinc-800'} rounded-full`} />
                           </div>
-                          <div className="h-4 w-12 bg-zinc-800/40 rounded" />
+                          <div className={`h-6 w-12 ${i === 2 ? 'bg-violet-500/10' : 'bg-zinc-800/40'} rounded-lg`} />
                         </div>
                       ))}
                     </div>
@@ -273,9 +297,11 @@ export default function LandingPage() {
                 </div>
               </motion.div>
 
-              {/* Subtle Back-Glow */}
-              <div className="absolute -inset-10 -z-10 bg-teal-500/10 blur-[100px] opacity-20 pointer-events-none" />
+              {/* Enhanced Mesh Back-Glows */}
+              <div className="absolute -top-20 -right-20 -z-10 bg-violet-500/20 blur-[120px] w-96 h-96 opacity-40 pointer-events-none animate-pulse" />
+              <div className="absolute -bottom-20 -left-20 -z-10 bg-teal-500/20 blur-[120px] w-96 h-96 opacity-40 pointer-events-none" />
             </motion.div>
+
 
 
           </div>
