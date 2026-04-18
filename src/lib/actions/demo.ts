@@ -74,61 +74,68 @@ export async function setupDemo() {
   // We'll delete any stuck record before creating a fresh one.
   await prisma.organization.deleteMany({ where: { isDemo: true } });
 
-  const demoEmail = `demo-${uuidv4().slice(0, 8)}@getclearq.com`;
+  const uniqueId = uuidv4().slice(0, 8);
+  const demoEmail = `demo-${uniqueId}@getclearq.com`;
   const demoPassword = "demo123";
   const passwordHash = await bcrypt.hash(demoPassword, 10);
   
   const expiresAt = new Date(Date.now() + 15 * 60 * 1000);
 
-  const org = await prisma.organization.create({
-    data: {
-      name: "Shared Support Demo",
-      slug: "demo-instance",
-      isDemo: true,
-      expiresAt,
-      plan: "ENTERPRISE",
-      subscriptionStatus: "ACTIVE",
-      users: {
-        create: {
-          email: demoEmail,
-          name: "Demo Agent",
-          passwordHash,
-          role: "ADMIN",
-          isActive: true,
-          plan: "ENTERPRISE",
-          subscriptionStatus: "ACTIVE",
+  try {
+    const org = await prisma.organization.create({
+      data: {
+        name: "Shared Support Demo",
+        slug: `demo-instance-${uniqueId}`,
+        isDemo: true,
+        expiresAt,
+        plan: "ENTERPRISE",
+        subscriptionStatus: "ACTIVE",
+        users: {
+          create: {
+            email: demoEmail,
+            name: "Demo Agent",
+            passwordHash,
+            role: "ADMIN",
+            isActive: true,
+            plan: "ENTERPRISE",
+            subscriptionStatus: "ACTIVE",
+          }
         }
+      },
+      include: {
+        users: true
       }
-    },
-    include: {
-      users: true
-    }
-  });
+    });
 
-  const user = org.users[0];
-  const team = await prisma.team.create({
-    data: { name: "Global Support", organizationId: org.id }
-  });
+    const user = org.users[0];
+    const team = await prisma.team.create({
+      data: { name: "Global Support", organizationId: org.id }
+    });
 
-  await prisma.teamMember.create({
-    data: { userId: user.id, teamId: team.id, role: "admin" }
-  });
+    await prisma.teamMember.create({
+      data: { userId: user.id, teamId: team.id, role: "admin" }
+    });
 
-  await prisma.ticket.createMany({
-    data: [
-      {
-        number: Math.floor(1000 + Math.random() * 9000),
-        subject: "Welcome to your ClearQ Demo!",
-        description: "This is a shared session. You have 15 minutes as a group to explore features before a 5-minute reset.",
-        status: "OPEN",
-        priority: "HIGH",
-        creatorId: user.id,
-        organizationId: org.id,
-        teamId: team.id,
-      }
-    ]
-  });
+    await prisma.ticket.createMany({
+      data: [
+        {
+          number: Math.floor(1000 + Math.random() * 9000),
+          subject: "Welcome to your ClearQ Demo!",
+          description: "This is a shared session. You have 15 minutes as a group to explore features before a 5-minute reset.",
+          status: "OPEN",
+          priority: "HIGH",
+          creatorId: user.id,
+          organizationId: org.id,
+          teamId: team.id,
+        }
+      ]
+    });
 
-  return { email: demoEmail, password: demoPassword, remaining: 15 };
+    return { email: demoEmail, password: demoPassword, remaining: 15 };
+  } catch (err: any) {
+    console.error("[DEMO_SETUP_ERROR]", err);
+    throw new Error(`INTERNAL_ERROR: ${err.message}`);
+  }
+
 }
 
