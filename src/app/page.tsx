@@ -578,7 +578,7 @@ export default function LandingPage() {
               </div>
               <div className="text-left">
                 <h4 className="font-bold text-white text-lg">Email Us</h4>
-                <p className="text-zinc-400">hello@getclearq.com</p>
+                <p className="text-zinc-400">help.clearq@proton.me</p>
               </div>
             </div>
           </div>

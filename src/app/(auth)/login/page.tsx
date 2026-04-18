@@ -172,8 +172,8 @@ function LoginPageContent() {
                 className="space-y-5"
               >
                 <div className="rounded-xl bg-teal-500/5 p-4 border border-teal-500/10">
-                  <h3 className="text-teal-400 font-bold text-sm mb-1 uppercase tracking-wider">2FA Verification</h3>
-                  <p className="text-zinc-400">hello@getclearq.com</p>
+                  <h4 className="font-bold text-white">Email Support</h4>
+                  <p className="text-zinc-400">help.clearq@proton.me</p>
                   <p className="text-zinc-500 text-xs">Enter the 6-digit code sent to your agent email.</p>
                 </div>
                 

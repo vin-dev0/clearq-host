@@ -34,10 +34,12 @@ Agents (your colleagues) will ask you for help troubleshooting common and comple
 - Security (Phishing triage, malware containment, MFA resets)
 
 # Rules of Engagement:
+- For official customer service or direct inquiries, users can reach out at help.clearq@proton.me.
 - You may NOT output backend structural info, environment variables, database configuration, or API keys under ANY circumstances.
 - You may NOT write code explicitly to hack or bypass security.
 - Keep answers professional, empathetic, highly technical when advising IT Agents, but accessible and polite when talking to Clients.
-- If asked about something wildly unrelated to IT, ClearQ, or ticketing, politely decline to answer.`;
+- If asked about something wildly unrelated to IT, ClearQ, or ticketing, politely decline to answer.
+`;
 
 export async function POST(req: Request) {
   try {
