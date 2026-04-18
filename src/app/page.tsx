@@ -263,24 +263,26 @@ export default function LandingPage() {
                       <div className="h-32 rounded-xl border border-teal-500/20 bg-teal-500/5 p-6 relative overflow-hidden group/card shadow-[inset_0_0_20px_rgba(20,184,166,0.05)]">
                          <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-teal-400 to-cyan-500" />
                          <div className="flex justify-between items-center mb-4">
-                            <div className="h-4 w-32 bg-teal-500/20 rounded-full" />
-                            <div className="h-5 w-5 rounded-full bg-teal-500/10 border border-teal-500/20 animate-pulse" />
+                            <div className="text-[10px] font-bold text-teal-400 uppercase tracking-widest">Urgent Ticket #1024</div>
+                            <div className="h-5 w-5 rounded-full bg-teal-500/10 border border-teal-500/20 animate-pulse flex items-center justify-center">
+                                <Zap className="h-2 w-2 text-teal-400" />
+                            </div>
                          </div>
-                         <div className="space-y-3">
-                            <div className="h-2 w-full bg-zinc-800/80 rounded" />
-                            <div className="h-2 w-2/3 bg-zinc-800/40 rounded" />
+                         <div className="space-y-2">
+                            <div className="text-white font-bold text-sm">Critical API Timeout on Production</div>
+                            <div className="text-zinc-500 text-xs truncate">Our team noticed a spike in 5xx errors across the auth endpoint...</div>
                          </div>
                       </div>
                       
                       <div className="flex-1 rounded-xl border border-zinc-800 bg-zinc-900/30 p-6 relative">
                          <div className="flex justify-between items-center mb-8">
-                            <div className="h-4 w-24 bg-zinc-800 rounded-full" />
-                            <div className="flex gap-1">
-                               <div className="h-1.5 w-1.5 rounded-full bg-violet-500" />
-                               <div className="h-1.5 w-1.5 rounded-full bg-teal-500" />
+                            <div className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest">Weekly Performance</div>
+                            <div className="flex gap-2 items-center">
+                               <div className="h-1 w-8 bg-violet-500/20 rounded-full" />
+                               <div className="text-[10px] text-violet-400 font-bold">98.2% CSAT</div>
                             </div>
                          </div>
-                         <div className="flex items-end gap-3 h-32 px-4">
+                         <div className="flex items-end gap-3 h-32 px-4 pb-2">
                             {[60, 40, 95, 70, 50, 80, 45, 85, 65, 75].map((h, i) => (
                               <motion.div 
                                 key={i}
@@ -298,22 +300,25 @@ export default function LandingPage() {
 
                     {/* Sidebar Stats Area */}
                     <div className="col-span-4 flex flex-col gap-4">
-                      {[1, 2, 3, 4].map((i) => (
-                        <div key={i} className={`flex-1 rounded-xl border ${i === 2 ? 'border-violet-500/30 bg-violet-500/5 shadow-[0_0_30px_rgba(139,92,246,0.05)]' : 'border-zinc-800 bg-zinc-900/50'} p-5 transition-transform hover:scale-105 duration-300`}>
-                          <div className="flex items-center gap-3 mb-3">
-                            <div className={`h-8 w-8 rounded-xl ${i === 2 ? 'bg-violet-500/20 text-violet-400' : 'bg-zinc-800 text-zinc-400'} flex items-center justify-center`}>
-                              {i === 1 && <Users className="h-4 w-4" />}
-                              {i === 2 && <Zap className="h-4 w-4" />}
-                              {i === 3 && <MessageSquare className="h-4 w-4" />}
-                              {i === 4 && <Shield className="h-4 w-4" />}
+                      {[
+                        { icon: Users, label: "Active Users", val: "1.2k", color: "text-zinc-400" },
+                        { icon: Zap, label: "Response Time", val: "1.4m", color: "text-violet-400" },
+                        { icon: MessageSquare, label: "Live Chats", val: "48", color: "text-zinc-400" },
+                        { icon: Shield, label: "Compliance", val: "SOC-2", color: "text-emerald-400" }
+                      ].map((item, i) => (
+                        <div key={i} className={`flex-1 rounded-xl border ${i === 1 ? 'border-violet-500/30 bg-violet-500/5 shadow-[0_0_30px_rgba(139,92,246,0.05)]' : 'border-zinc-800 bg-zinc-900/50'} p-5 transition-transform hover:scale-105 duration-300`}>
+                          <div className="flex items-center gap-3 mb-2">
+                            <div className={`h-8 w-8 rounded-xl ${i === 1 ? 'bg-violet-500/20 text-violet-400' : 'bg-zinc-800 text-zinc-400'} flex items-center justify-center`}>
+                              <item.icon className="h-4 w-4" />
                             </div>
-                            <div className={`h-2 w-20 ${i === 2 ? 'bg-violet-500/20' : 'bg-zinc-800'} rounded-full`} />
+                            <div className="text-[9px] font-bold text-zinc-500 uppercase tracking-widest">{item.label}</div>
                           </div>
-                          <div className={`h-6 w-12 ${i === 2 ? 'bg-violet-500/10' : 'bg-zinc-800/40'} rounded-lg`} />
+                          <div className={`text-xl font-black ${item.color} tracking-tight`}>{item.val}</div>
                         </div>
                       ))}
                     </div>
                   </div>
+
                 </div>
               </motion.div>
 
