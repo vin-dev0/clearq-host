@@ -186,11 +186,10 @@ export default function LandingPage() {
                 </Link>
               </div>
 
-              <div className="mt-16 flex items-center justify-center gap-x-12 gap-y-6 flex-wrap opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-                <div className="text-xl font-bold flex items-center gap-2 text-zinc-300"><Globe className="h-6 w-6" /> TECHCORP</div>
-                <div className="text-xl font-bold flex items-center gap-2 text-zinc-300"><Zap className="h-6 w-6" /> SPEEDY</div>
-                <div className="text-xl font-bold flex items-center gap-2 text-zinc-300"><Command className="h-6 w-6" /> QUANTUM</div>
-                <div className="text-xl font-bold flex items-center gap-2 text-zinc-300"><Lock className="h-6 w-6" /> SECURELY</div>
+              <div className="mt-16 flex items-center justify-center gap-x-12 gap-y-6 flex-wrap transition-all duration-500">
+                <div className="text-xl md:text-2xl font-black bg-gradient-to-r from-zinc-500 via-zinc-200 to-zinc-500 bg-clip-text text-transparent uppercase tracking-[0.3em] opacity-50">
+                  Fast, Scalable, Secure
+                </div>
               </div>
             </motion.div>
 
@@ -198,39 +197,39 @@ export default function LandingPage() {
             <motion.div
               style={{ perspective: "2000px" }}
               initial={{ opacity: 0, y: 100 }}
-              animate={{ 
-                opacity: 1, 
+              animate={{
+                opacity: 1,
                 y: [0, -15, 0], // Floating effect
               }}
-              transition={{ 
+              transition={{
                 opacity: { duration: 1.2, delay: 0.4 },
-                y: { 
-                  duration: 6, 
-                  repeat: Infinity, 
-                  ease: "easeInOut" 
-                } 
+                y: {
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }
               }}
               className="relative mt-24 flex justify-center"
             >
 
 
-              <motion.div 
-                initial={{ 
-                  rotateX: 25, 
-                  rotateY: -15, 
-                  rotateZ: 5 
+              <motion.div
+                initial={{
+                  rotateX: 25,
+                  rotateY: -15,
+                  rotateZ: 5
                 }}
-                whileHover={{ 
-                  rotateX: 0, 
-                  rotateY: 0, 
+                whileHover={{
+                  rotateX: 0,
+                  rotateY: 0,
                   rotateZ: 0,
                   scale: 1.02,
                   y: -10
                 }}
-                transition={{ 
-                  type: "spring", 
-                  stiffness: 100, 
-                  damping: 15 
+                transition={{
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 15
                 }}
                 className="relative mx-auto max-w-[1000px] w-full overflow-hidden rounded-2xl border border-white/10 bg-zinc-900/40 p-1 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.7)] backdrop-blur-3xl transform-gpu cursor-pointer z-20"
               >
@@ -239,7 +238,7 @@ export default function LandingPage() {
                 <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-violet-600/10 blur-[100px] pointer-events-none" />
                 <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-teal-500/10 blur-[100px] pointer-events-none" />
                 <div className="absolute inset-0 bg-gradient-to-tr from-teal-500/5 via-transparent to-violet-500/5 pointer-events-none" />
-                
+
                 {/* Simplified Browser Interface */}
                 <div className="flex items-center justify-between border-b border-white/5 px-4 py-3 bg-zinc-900/60">
                   <div className="flex gap-1.5">
@@ -261,40 +260,40 @@ export default function LandingPage() {
                     {/* Main Feed Area */}
                     <div className="col-span-8 flex flex-col gap-6">
                       <div className="h-32 rounded-xl border border-teal-500/20 bg-teal-500/5 p-6 relative overflow-hidden group/card shadow-[inset_0_0_20px_rgba(20,184,166,0.05)]">
-                         <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-teal-400 to-cyan-500" />
-                         <div className="flex justify-between items-center mb-4">
-                            <div className="text-[10px] font-bold text-teal-400 uppercase tracking-widest">Urgent Ticket #1024</div>
-                            <div className="h-5 w-5 rounded-full bg-teal-500/10 border border-teal-500/20 animate-pulse flex items-center justify-center">
-                                <Zap className="h-2 w-2 text-teal-400" />
-                            </div>
-                         </div>
-                         <div className="space-y-2">
-                            <div className="text-white font-bold text-sm">Critical API Timeout on Production</div>
-                            <div className="text-zinc-500 text-xs truncate">Our team noticed a spike in 5xx errors across the auth endpoint...</div>
-                         </div>
+                        <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-teal-400 to-cyan-500" />
+                        <div className="flex justify-between items-center mb-4">
+                          <div className="text-[10px] font-bold text-teal-400 uppercase tracking-widest">Urgent Ticket #1024</div>
+                          <div className="h-5 w-5 rounded-full bg-teal-500/10 border border-teal-500/20 animate-pulse flex items-center justify-center">
+                            <Zap className="h-2 w-2 text-teal-400" />
+                          </div>
+                        </div>
+                        <div className="space-y-2">
+                          <div className="text-white font-bold text-sm">Critical API Timeout on Production</div>
+                          <div className="text-zinc-500 text-xs truncate">Our team noticed a spike in 5xx errors across the auth endpoint...</div>
+                        </div>
                       </div>
-                      
+
                       <div className="flex-1 rounded-xl border border-zinc-800 bg-zinc-900/30 p-6 relative">
-                         <div className="flex justify-between items-center mb-8">
-                            <div className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest">Weekly Performance</div>
-                            <div className="flex gap-2 items-center">
-                               <div className="h-1 w-8 bg-violet-500/20 rounded-full" />
-                               <div className="text-[10px] text-violet-400 font-bold">98.2% CSAT</div>
-                            </div>
-                         </div>
-                         <div className="flex items-end gap-3 h-32 px-4 pb-2">
-                            {[60, 40, 95, 70, 50, 80, 45, 85, 65, 75].map((h, i) => (
-                              <motion.div 
-                                key={i}
-                                initial={{ height: 0 }}
-                                animate={{ height: `${h}%` }}
-                                transition={{ delay: 0.6 + (i * 0.08), duration: 1 }}
-                                className={`flex-1 rounded-t-lg relative group/bar`} 
-                              >
-                                <div className={`absolute inset-0 bg-gradient-to-t ${i % 3 === 0 ? 'from-violet-600 to-violet-400' : 'from-teal-600 to-cyan-400'} opacity-80 rounded-t-lg transition-all group-hover/bar:opacity-100 group-hover/bar:shadow-[0_0_15px_rgba(20,184,166,0.5)]`} />
-                              </motion.div>
-                            ))}
-                         </div>
+                        <div className="flex justify-between items-center mb-8">
+                          <div className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest">Weekly Performance</div>
+                          <div className="flex gap-2 items-center">
+                            <div className="h-1 w-8 bg-violet-500/20 rounded-full" />
+                            <div className="text-[10px] text-violet-400 font-bold">98.2% CSAT</div>
+                          </div>
+                        </div>
+                        <div className="flex items-end gap-3 h-32 px-4 pb-2">
+                          {[60, 40, 95, 70, 50, 80, 45, 85, 65, 75].map((h, i) => (
+                            <motion.div
+                              key={i}
+                              initial={{ height: 0 }}
+                              animate={{ height: `${h}%` }}
+                              transition={{ delay: 0.6 + (i * 0.08), duration: 1 }}
+                              className={`flex-1 rounded-t-lg relative group/bar`}
+                            >
+                              <div className={`absolute inset-0 bg-gradient-to-t ${i % 3 === 0 ? 'from-violet-600 to-violet-400' : 'from-teal-600 to-cyan-400'} opacity-80 rounded-t-lg transition-all group-hover/bar:opacity-100 group-hover/bar:shadow-[0_0_15px_rgba(20,184,166,0.5)]`} />
+                            </motion.div>
+                          ))}
+                        </div>
                       </div>
                     </div>
 
