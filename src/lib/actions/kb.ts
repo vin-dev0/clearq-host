@@ -159,9 +159,13 @@ export async function createArticle(data: {
 
   if (!orgId) throw new Error("Unauthorized");
 
+  // Ensure categoryId is null if empty string
+  const categoryId = data.categoryId === "" ? null : data.categoryId;
+
   const article = await prisma.article.create({
     data: {
       ...data,
+      categoryId,
       organizationId: orgId,
       authorId: user.id,
       status: data.isPublished ? "PUBLISHED" : "DRAFT",
@@ -180,10 +184,14 @@ export async function updateArticle(id: string, data: any) {
 
   if (!orgId) throw new Error("Unauthorized");
 
+  // Ensure categoryId is null if empty string
+  const categoryId = data.categoryId === "" ? null : data.categoryId;
+
   const article = await prisma.article.update({
     where: { id, organizationId: orgId },
     data: {
       ...data,
+      categoryId,
       status: data.isPublished ? "PUBLISHED" : "DRAFT",
       publishedAt: data.isPublished ? new Date() : null,
     }
@@ -215,8 +223,36 @@ export async function getAdminCategories() {
 
   if (!orgId) return [];
 
-  return prisma.articleCategory.findMany({
+  const categories = await prisma.articleCategory.findMany({
     where: { organizationId: orgId },
     orderBy: { order: "asc" }
   });
+
+  // Seed default categories if none exist
+  if (categories.length === 0) {
+    const defaults = [
+      { name: "Getting Started", slug: "getting-started", order: 0 },
+      { name: "Account & Billing", slug: "account-billing", order: 1 },
+      { name: "Troubleshooting", slug: "troubleshooting", order: 2 },
+      { name: "Product Updates", slug: "product-updates", order: 3 },
+    ];
+
+    await Promise.all(
+      defaults.map(cat => 
+        prisma.articleCategory.create({
+          data: {
+            ...cat,
+            organizationId: orgId,
+          }
+        })
+      )
+    );
+
+    return prisma.articleCategory.findMany({
+      where: { organizationId: orgId },
+      orderBy: { order: "asc" }
+    });
+  }
+
+  return categories;
 }

@@ -36903,10 +36903,11 @@ export namespace Prisma {
 
   export type TicketWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    number?: number
+    number_organizationId?: TicketNumberOrganizationIdCompoundUniqueInput
     AND?: TicketWhereInput | TicketWhereInput[]
     OR?: TicketWhereInput[]
     NOT?: TicketWhereInput | TicketWhereInput[]
+    number?: IntFilter<"Ticket"> | number
     subject?: StringFilter<"Ticket"> | string
     description?: StringFilter<"Ticket"> | string
     status?: StringFilter<"Ticket"> | string
@@ -36935,7 +36936,7 @@ export namespace Prisma {
     organization?: XOR<OrganizationNullableRelationFilter, OrganizationWhereInput> | null
     tags?: TicketTagListRelationFilter
     watchers?: TicketWatcherListRelationFilter
-  }, "id" | "number">
+  }, "id" | "number_organizationId">
 
   export type TicketOrderByWithAggregationInput = {
     id?: SortOrder
@@ -37750,11 +37751,12 @@ export namespace Prisma {
 
   export type ArticleWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    slug?: string
+    slug_organizationId?: ArticleSlugOrganizationIdCompoundUniqueInput
     AND?: ArticleWhereInput | ArticleWhereInput[]
     OR?: ArticleWhereInput[]
     NOT?: ArticleWhereInput | ArticleWhereInput[]
     title?: StringFilter<"Article"> | string
+    slug?: StringFilter<"Article"> | string
     content?: StringFilter<"Article"> | string
     excerpt?: StringNullableFilter<"Article"> | string | null
     keywords?: StringNullableFilter<"Article"> | string | null
@@ -37772,7 +37774,7 @@ export namespace Prisma {
     category?: XOR<ArticleCategoryNullableRelationFilter, ArticleCategoryWhereInput> | null
     author?: XOR<UserRelationFilter, UserWhereInput>
     organization?: XOR<OrganizationRelationFilter, OrganizationWhereInput>
-  }, "id" | "slug">
+  }, "id" | "slug_organizationId">
 
   export type ArticleOrderByWithAggregationInput = {
     id?: SortOrder
@@ -37859,11 +37861,12 @@ export namespace Prisma {
 
   export type ArticleCategoryWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    slug?: string
+    slug_organizationId?: ArticleCategorySlugOrganizationIdCompoundUniqueInput
     AND?: ArticleCategoryWhereInput | ArticleCategoryWhereInput[]
     OR?: ArticleCategoryWhereInput[]
     NOT?: ArticleCategoryWhereInput | ArticleCategoryWhereInput[]
     name?: StringFilter<"ArticleCategory"> | string
+    slug?: StringFilter<"ArticleCategory"> | string
     description?: StringNullableFilter<"ArticleCategory"> | string | null
     icon?: StringNullableFilter<"ArticleCategory"> | string | null
     parentId?: StringNullableFilter<"ArticleCategory"> | string | null
@@ -37874,7 +37877,7 @@ export namespace Prisma {
     parent?: XOR<ArticleCategoryNullableRelationFilter, ArticleCategoryWhereInput> | null
     children?: ArticleCategoryListRelationFilter
     organization?: XOR<OrganizationRelationFilter, OrganizationWhereInput>
-  }, "id" | "slug">
+  }, "id" | "slug_organizationId">
 
   export type ArticleCategoryOrderByWithAggregationInput = {
     id?: SortOrder
@@ -38223,11 +38226,12 @@ export namespace Prisma {
 
   export type AssetWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    assetTag?: string
     serialNumber?: string
+    assetTag_organizationId?: AssetAssetTagOrganizationIdCompoundUniqueInput
     AND?: AssetWhereInput | AssetWhereInput[]
     OR?: AssetWhereInput[]
     NOT?: AssetWhereInput | AssetWhereInput[]
+    assetTag?: StringFilter<"Asset"> | string
     name?: StringFilter<"Asset"> | string
     type?: StringFilter<"Asset"> | string
     manufacturer?: StringNullableFilter<"Asset"> | string | null
@@ -38253,7 +38257,7 @@ export namespace Prisma {
     lastAuditDate?: DateTimeNullableFilter<"Asset"> | Date | string | null
     createdBy?: XOR<UserRelationFilter, UserWhereInput>
     organization?: XOR<OrganizationNullableRelationFilter, OrganizationWhereInput> | null
-  }, "id" | "assetTag" | "serialNumber">
+  }, "id" | "serialNumber" | "assetTag_organizationId">
 
   export type AssetOrderByWithAggregationInput = {
     id?: SortOrder
@@ -42561,6 +42565,11 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
+  export type TicketNumberOrganizationIdCompoundUniqueInput = {
+    number: number
+    organizationId: string
+  }
+
   export type TicketCountOrderByAggregateInput = {
     id?: SortOrder
     number?: SortOrder
@@ -43033,6 +43042,11 @@ export namespace Prisma {
     isNot?: ArticleCategoryWhereInput | null
   }
 
+  export type ArticleSlugOrganizationIdCompoundUniqueInput = {
+    slug: string
+    organizationId: string
+  }
+
   export type ArticleCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
@@ -43101,6 +43115,11 @@ export namespace Prisma {
   export type ArticleSumOrderByAggregateInput = {
     viewCount?: SortOrder
     helpfulCount?: SortOrder
+  }
+
+  export type ArticleCategorySlugOrganizationIdCompoundUniqueInput = {
+    slug: string
+    organizationId: string
   }
 
   export type ArticleCategoryCountOrderByAggregateInput = {
@@ -43315,6 +43334,11 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type AssetAssetTagOrganizationIdCompoundUniqueInput = {
+    assetTag: string
+    organizationId: string
   }
 
   export type AssetCountOrderByAggregateInput = {

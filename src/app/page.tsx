@@ -147,16 +147,6 @@ export default function LandingPage() {
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="text-center"
             >
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.2 }}
-                className="mb-8 inline-flex items-center gap-2 rounded-full border border-teal-500/20 bg-teal-500/5 px-4 py-1.5 text-sm font-medium text-teal-400"
-              >
-                <Sparkles className="h-4 w-4 fill-teal-400/20" />
-                <span>Next-gen AI support is here</span>
-                <ChevronRight className="h-4 w-4" />
-              </motion.div>
 
               <h1 className="mx-auto max-w-5xl text-6xl font-extrabold tracking-tight text-white md:text-7xl lg:text-8xl leading-[1.1]">
                 Customer support,

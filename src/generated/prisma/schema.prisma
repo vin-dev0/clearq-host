@@ -157,7 +157,7 @@ model TeamMember {
 
 model Ticket {
   id              String          @id @default(cuid())
-  number          Int             @unique
+  number          Int
   subject         String
   description     String
   status          String          @default("OPEN")
@@ -187,6 +187,7 @@ model Ticket {
   tags            TicketTag[]
   watchers        TicketWatcher[]
 
+  @@unique([number, organizationId])
   @@index([status])
   @@index([priority])
   @@index([creatorId])
@@ -347,7 +348,7 @@ model SavedView {
 model Article {
   id             String           @id @default(cuid())
   title          String
-  slug           String           @unique
+  slug           String
   content        String
   excerpt        String?
   keywords       String?
@@ -366,6 +367,7 @@ model Article {
   author         User             @relation(fields: [authorId], references: [id])
   organization   Organization     @relation(fields: [organizationId], references: [id], onDelete: Cascade)
 
+  @@unique([slug, organizationId])
   @@index([status])
   @@index([categoryId])
   @@index([organizationId])
@@ -374,7 +376,7 @@ model Article {
 model ArticleCategory {
   id             String            @id @default(cuid())
   name           String
-  slug           String            @unique
+  slug           String
   description    String?
   icon           String?
   parentId       String?
@@ -386,6 +388,7 @@ model ArticleCategory {
   children       ArticleCategory[] @relation("CategoryHierarchy")
   organization   Organization      @relation(fields: [organizationId], references: [id], onDelete: Cascade)
 
+  @@unique([slug, organizationId])
   @@index([parentId])
   @@index([organizationId])
 }
@@ -447,7 +450,7 @@ model ChatMessage {
 
 model Asset {
   id             String        @id @default(cuid())
-  assetTag       String        @unique
+  assetTag       String
   name           String
   type           String        @default("LAPTOP")
   manufacturer   String?
@@ -475,6 +478,7 @@ model Asset {
   createdBy      User          @relation("AssetCreator", fields: [createdById], references: [id])
   organization   Organization? @relation(fields: [organizationId], references: [id], onDelete: Cascade)
 
+  @@unique([assetTag, organizationId])
   @@index([assetTag])
   @@index([type])
   @@index([status])
